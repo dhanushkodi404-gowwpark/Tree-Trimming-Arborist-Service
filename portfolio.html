@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio | Timber &amp; Tonic — Certified Arborist &amp; Tree Care</title>
+  <meta name="description" content="Browse our portfolio of completed tree trimming, removal, stump grinding, and storm response projects across the NYC metro area.">
+  <meta property="og:title" content="Portfolio | Timber & Tonic Arborist Projects">
+  <meta property="og:description" content="See our completed tree care projects — before and after.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --forest: #1e2b1c;
+      --forest-deep: #131d11;
+      --moss: #3a5a35;
+      --sage: #7a8f6b;
+      --bark: #5e4b3a;
+      --bark-light: #8b735b;
+      --sand: #d9cdb8;
+      --cream: #f3efe6;
+      --white: #fdfbf7;
+      --amber: #c97f2e;
+      --amber-bright: #e89b3e;
+      --charcoal: #2d2b26;
+      --paper: #efe8dc;
+      --rust: #a8542c;
+      --font-display: "Barlow Condensed", "Impact", sans-serif;
+      --font-serif: "Playfair Display", Georgia, serif;
+      --font-body: "Inter", "Helvetica Neue", sans-serif;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.12);
+      --radius: 4px;
+      --radius-lg: 12px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #4a463f;
+    }
+
+    .page-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .section-space {
+      padding: 90px 0;
+    }
+
+    /* ---------- HEADER (exact copy from reference) ---------- */
+    .site-header {
+      position: fixed;
+      top: 16px;
+      left: 28px;
+      right: 28px;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-island {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+      border: 1px solid #d6cfc2;
+      min-height: 70px;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1340px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--forest);
+      white-space: nowrap;
+    }
+
+    .brand-icon {
+      background: var(--amber);
+      color: var(--white);
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .desktop-nav > a,
+    .desktop-nav summary {
+      color: var(--forest);
+      transition: color 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .desktop-nav > a:hover,
+    .desktop-nav summary:hover,
+    .desktop-nav .active {
+      color: var(--amber);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 36px;
+      left: 0;
+      background: var(--white);
+      border: 1px solid #d6cfc2;
+      border-radius: 8px;
+      min-width: 190px;
+      box-shadow: var(--shadow-md);
+      padding: 8px;
+      display: none;
+      z-index: 10;
+    }
+
+    .nav-dropdown[open] .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: none;
+      color: var(--charcoal);
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .dropdown-content a:hover {
+      background: #f2ede4;
+    }
+
+    .nav-toggles {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .circle-button {
+      border: 1px solid #d6cfc2;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--forest);
+      transition: background 0.2s;
+    }
+
+    .circle-button:hover {
+      background: #f2ede4;
+    }
+
+    .circle-button svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .studio-button {
+      background: var(--amber);
+      color: var(--white);
+      border: 0;
+      border-radius: 6px;
+      min-height: 44px;
+      padding: 8px 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .studio-button:hover {
+      background: var(--amber-bright);
+      transform: translateY(-1px);
+    }
+
+    .arrow-disc {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: grid;
+      place-items: center;
+    }
+
+    .arrow-disc svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .navigation-button {
+      background: none;
+      border: 0;
+      cursor: pointer;
+      color: var(--forest);
+      padding: 0;
+    }
+
+    .mobile-toggle {
+      display: none;
+    }
+
+    /* ==================== MOBILE NAVIGATION DRAWER ==================== */
+    .mobile-nav {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--border-light, #e2d9cb);
+      border-radius: 14px;
+      margin-top: 12px;
+      padding: 16px 18px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .mobile-nav.is-open,
+    .mobile-nav:not([hidden]) {
+      display: flex !important;
+    }
+
+    .mobile-nav > a,
+    .mobile-nav details > summary {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      padding: 12px 14px !important;
+      font-size: 0.95rem !important;
+      font-weight: 600 !important;
+      color: var(--forest-deep, #1b291a) !important;
+      text-decoration: none !important;
+      border-radius: 8px !important;
+      transition: background 0.2s, color 0.2s !important;
+      cursor: pointer !important;
+      box-sizing: border-box !important;
+      margin: 2px 0 !important;
+      list-style: none !important;
+    }
+
+    .mobile-nav > a:hover,
+    .mobile-nav details > summary:hover {
+      background: rgba(184, 115, 51, 0.08) !important;
+      color: var(--amber, #b87333) !important;
+    }
+
+    .mobile-nav details > summary::-webkit-details-marker {
+      display: none !important;
+    }
+
+    /* Accordion Dropdown in Mobile (Inline flow, NO absolute overlap!) */
+    .mobile-nav .nav-dropdown {
+      position: static !important;
+      width: 100% !important;
+      margin: 2px 0 !important;
+    }
+
+    .mobile-nav .nav-dropdown summary svg {
+      transition: transform 0.25s ease !important;
+    }
+
+    .mobile-nav .nav-dropdown[open] summary svg {
+      transform: rotate(180deg) !important;
+    }
+
+    .mobile-nav .dropdown-content {
+      position: static !important;
+      box-shadow: none !important;
+      border: 1px solid rgba(184, 115, 51, 0.15) !important;
+      background: rgba(0, 0, 0, 0.02) !important;
+      border-radius: 8px !important;
+      padding: 6px 8px !important;
+      margin: 4px 0 8px 10px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2px !important;
+      min-width: 0 !important;
+      animation: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      box-sizing: border-box !important;
+    }
+
+    .mobile-nav .dropdown-content a {
+      display: block !important;
+      padding: 9px 12px !important;
+      font-size: 0.88rem !important;
+      font-weight: 500 !important;
+      color: var(--forest-deep, #1b291a) !important;
+      border-radius: 6px !important;
+      text-decoration: none !important;
+      transition: background 0.2s, color 0.2s !important;
+      box-sizing: border-box !important;
+    }
+
+    .mobile-nav .dropdown-content a:hover {
+      background: rgba(184, 115, 51, 0.12) !important;
+      color: var(--amber, #b87333) !important;
+    }
+
+    /* Sign In button full-width in Mobile */
+    .mobile-nav .studio-button {
+      margin: 14px 0 10px 0 !important;
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 12px 20px !important;
+      font-size: 0.88rem !important;
+      box-sizing: border-box !important;
+      display: inline-flex !important;
+    }
+
+    /* Bottom Toggles */
+    .mobile-nav .nav-toggles {
+      display: flex !important;
+      justify-content: center !important;
+      gap: 16px !important;
+      padding-top: 12px !important;
+      border-top: 1px solid var(--border-light, #e2d9cb) !important;
+      margin-top: 8px !important;
+      width: 100% !important;
+    }
+
+    .mobile-nav .circle-button {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50% !important;
+      display: grid !important;
+      place-items: center !important;
+    }
+
+    /* Dark Mode styling for mobile drawer */
+    body.dark-mode .mobile-nav,
+    .dark .mobile-nav {
+      background: #152214 !important;
+      border-color: rgba(122, 143, 107, 0.3) !important;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45) !important;
+    }
+
+    body.dark-mode .mobile-nav > a,
+    body.dark-mode .mobile-nav details > summary,
+    .dark .mobile-nav > a,
+    .dark .mobile-nav details > summary {
+      color: #f5f2eb !important;
+    }
+
+    body.dark-mode .mobile-nav > a:hover,
+    body.dark-mode .mobile-nav details > summary:hover,
+    .dark .mobile-nav > a:hover,
+    .dark .mobile-nav details > summary:hover {
+      background: rgba(217, 119, 6, 0.15) !important;
+      color: var(--amber-bright, #d97706) !important;
+    }
+
+    body.dark-mode .mobile-nav .dropdown-content,
+    .dark .mobile-nav .dropdown-content {
+      background: rgba(255, 255, 255, 0.04) !important;
+      border-color: rgba(122, 143, 107, 0.25) !important;
+    }
+
+    body.dark-mode .mobile-nav .dropdown-content a,
+    .dark .mobile-nav .dropdown-content a {
+      color: #e2ddd5 !important;
+    }
+
+    body.dark-mode .mobile-nav .dropdown-content a:hover,
+    .dark .mobile-nav .dropdown-content a:hover {
+      background: rgba(217, 119, 6, 0.2) !important;
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .mobile-nav .nav-toggles,
+    .dark .mobile-nav .nav-toggles {
+      border-top-color: rgba(122, 143, 107, 0.25) !important;
+    }
+
+    /* ================================================================
+       PORTFOLIO PAGE – UNIQUE DESIGN SYSTEM
+       Warm parchment + wood-panel aesthetic, editorial serif headlines,
+       geometric accents, layered layouts, before/after showcases.
+       ================================================================ */
+
+    .eyebrow {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 12px;
+    }
+
+    /* ---------- PORTFOLIO HERO – SPLIT BANNER WITH OFFSET STATS ---------- */
+    .portfolio-hero {
+      position: relative;
+      background: var(--paper);
+      padding: 160px 0 110px;
+      overflow: hidden;
+    }
+
+    .portfolio-hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 70px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .portfolio-hero-copy h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6.5vw, 5.6rem);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      line-height: 0.98;
+      color: var(--forest);
+      margin-bottom: 26px;
+    }
+
+    .portfolio-hero-copy h1 em {
+      color: var(--rust);
+      font-style: italic;
+    }
+
+    .portfolio-hero-copy p {
+      font-size: 1.05rem;
+      color: #5a554c;
+      max-width: 480px;
+      margin-bottom: 22px;
+    }
+
+    .portfolio-hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--forest);
+      color: var(--white);
+      padding: 9px 18px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+
+    .portfolio-hero-tagline span {
+      width: 6px;
+      height: 6px;
+      background: var(--amber-bright);
+      border-radius: 50%;
+    }
+
+    .portfolio-hero-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .portfolio-hero-filters button {
+      background: transparent;
+      border: 1px solid #c9beac;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--forest);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .portfolio-hero-filters button:hover {
+      background: var(--white);
+      border-color: var(--amber);
+    }
+
+    .portfolio-hero-filters button.active {
+      background: var(--forest);
+      border-color: var(--forest);
+      color: var(--white);
+    }
+
+    .portfolio-hero-photo {
+      position: relative;
+      height: 560px;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(19, 29, 17, 0.25);
+    }
+
+    .portfolio-hero-photo img {
+      object-position: center 30%;
+      filter: grayscale(0.2) brightness(0.95);
+    }
+
+    .portfolio-hero-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 2px solid rgba(201, 127, 46, 0.5);
+      border-radius: 4px;
+      transform: translate(14px, 14px);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .portfolio-hero-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      z-index: 4;
+      background: var(--amber);
+      color: var(--forest-deep);
+      padding: 22px 26px;
+      box-shadow: var(--shadow-md);
+      max-width: 220px;
+    }
+
+    .portfolio-hero-badge .big {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .portfolio-hero-badge .small {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    /* ---------- SECTION A – FEATURED PROJECT (large split) ---------- */
+    .featured-project {
+      background: var(--white);
+      padding: 100px 0;
+    }
+
+    .featured-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 50px;
+    }
+
+    .featured-header h2 {
+      font-family: var(--font-serif);
+      text-transform: none;
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    .featured-header h2 em {
+      color: var(--rust);
+      font-style: italic;
+    }
+
+    .featured-header p {
+      color: #5a554c;
+      font-size: 1rem;
+      padding-bottom: 8px;
+    }
+
+    .featured-split {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .featured-image {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    .featured-image img {
+      transition: transform 0.6s ease;
+    }
+
+    .featured-split:hover .featured-image img {
+      transform: scale(1.04);
+    }
+
+    .featured-image .project-label {
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      background: var(--amber);
+      color: var(--forest-deep);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      z-index: 2;
+    }
+
+    .featured-image .image-credit {
+      position: absolute;
+      bottom: 18px;
+      left: 22px;
+      right: 22px;
+      z-index: 2;
+      color: var(--white);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .featured-details {
+      background: var(--forest);
+      color: var(--white);
+      padding: 50px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-details .eyebrow {
+      color: var(--amber-bright);
+    }
+
+    .featured-details h3 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      text-transform: none;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+
+    .featured-details p {
+      color: #c5bfb4;
+      font-size: 0.94rem;
+      margin-bottom: 26px;
+    }
+
+    .project-meta {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 22px;
+    }
+
+    .project-meta .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.85rem;
+    }
+
+    .project-meta .meta-label {
+      color: #a8a094;
+      font-weight: 500;
+    }
+
+    .project-meta .meta-value {
+      color: var(--amber-bright);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .featured-details .studio-button {
+      background: var(--amber-bright);
+      color: var(--forest-deep);
+      align-self: flex-start;
+      min-height: 48px;
+      font-size: 0.8rem;
+    }
+
+    .featured-details .studio-button:hover {
+      background: var(--amber);
+    }
+
+    .featured-details .studio-button .arrow-disc {
+      background: rgba(19, 29, 17, 0.15);
+    }
+
+    /* ---------- SECTION B – PROJECT GRID (masonry-style) ---------- */
+    .project-grid-section {
+      background: var(--paper);
+      padding: 100px 0;
+      border-top: 1px solid #e2d9cb;
+      border-bottom: 1px solid #e2d9cb;
+    }
+
+    .project-grid-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 56px;
+    }
+
+    .project-grid-header h2 {
+      font-family: var(--font-serif);
+      text-transform: none;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 16px;
+    }
+
+    .project-grid-header h2 em {
+      color: var(--rust);
+      font-style: italic;
+    }
+
+    .project-grid-header p {
+      color: #5a554c;
+    }
+
+    .project-masonry {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 260px;
+      gap: 20px;
+    }
+
+    .project-tile {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--sand);
+      cursor: pointer;
+    }
+
+    .project-tile img {
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform 0.5s ease, filter 0.4s ease;
+    }
+
+    .project-tile:hover img {
+      transform: scale(1.06);
+      filter: brightness(0.95) saturate(1);
+    }
+
+    .project-tile .tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(19, 29, 17, 0.88) 0%, rgba(19, 29, 17, 0.2) 45%, transparent 70%);
+      z-index: 1;
+    }
+
+    .project-tile .tile-info {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: 24px 22px;
+      color: var(--white);
+    }
+
+    .project-tile .tile-cat {
+      display: inline-block;
+      background: var(--amber);
+      color: var(--forest-deep);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      margin-bottom: 8px;
+    }
+
+    .project-tile .tile-info h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      text-transform: none;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .project-tile .tile-info .tile-location {
+      font-size: 0.74rem;
+      color: #cfc8bd;
+      letter-spacing: 0.04em;
+    }
+
+    .project-tile.tall {
+      grid-row: span 2;
+    }
+
+    .project-tile.wide {
+      grid-column: span 2;
+    }
+
+    /* ---------- SECTION C – BEFORE & AFTER ---------- */
+    .before-after-section {
+      background: var(--white);
+      padding: 100px 0;
+    }
+
+    .before-after-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 50px;
+    }
+
+    .before-after-header h2 {
+      font-family: var(--font-serif);
+      text-transform: none;
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    .before-after-header h2 em {
+      color: var(--rust);
+      font-style: italic;
+    }
+
+    .before-after-header p {
+      color: #5a554c;
+      font-size: 1rem;
+      padding-bottom: 8px;
+    }
+
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .ba-card {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e2d9cb;
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s, transform 0.25s;
+    }
+
+    .ba-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .ba-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    .ba-images figure {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+    }
+
+    .ba-images figure img {
+      filter: brightness(0.95);
+    }
+
+    .ba-images figure::after {
+      content: attr(data-label);
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--forest-deep);
+      color: var(--white);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      z-index: 2;
+    }
+
+    .ba-images figure.after::after {
+      background: var(--amber);
+      color: var(--forest-deep);
+    }
+
+    .ba-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: var(--white);
+      transform: translateX(-50%);
+      z-index: 3;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .ba-content {
+      padding: 24px 26px 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .ba-content h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      text-transform: none;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+
+    .ba-content .ba-loc {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 12px;
+    }
+
+    .ba-content p {
+      font-size: 0.88rem;
+      color: #5a554c;
+      flex: 1;
+    }
+
+    /* ---------- SECTION D – STATS BAND ---------- */
+    .portfolio-stats {
+      position: relative;
+      background: var(--forest);
+      color: var(--white);
+      overflow: hidden;
+      padding: 100px 0;
+    }
+
+    .portfolio-stats-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .portfolio-stats-bg img {
+      object-position: center 40%;
+      filter: brightness(0.3) saturate(0.7);
+    }
+
+    .portfolio-stats-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .portfolio-stats h2 {
+      font-family: var(--font-serif);
+      text-transform: none;
+      font-weight: 600;
+      color: var(--white);
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 56px;
+    }
+
+    .portfolio-stats h2 em {
+      color: var(--amber-bright);
+      font-style: italic;
+    }
+
+    .portfolio-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .portfolio-stat-item {
+      text-align: center;
+      padding: 28px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 4px;
+      background: rgba(19, 29, 17, 0.35);
+      backdrop-filter: blur(4px);
+      transition: border-color 0.25s;
+    }
+
+    .portfolio-stat-item:hover {
+      border-color: var(--amber-bright);
+    }
+
+    .portfolio-stat-item .num {
+      font-family: var(--font-serif);
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--amber-bright);
+      line-height: 1;
+    }
+
+    .portfolio-stat-item .lbl {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #c5bfb4;
+    }
+
+    /* ---------- SECTION E – CATEGORIES / SERVICES USED ---------- */
+    .categories-section {
+      background: var(--paper);
+      padding: 100px 0;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .categories-copy h2 {
+      font-family: var(--font-serif);
+      text-transform: none;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 18px;
+    }
+
+    .categories-copy h2 em {
+      color: var(--rust);
+      font-style: italic;
+    }
+
+    .categories-copy p {
+      color: #5a554c;
+      margin-bottom: 28px;
+    }
+
+    .categories-copy .studio-button {
+      background: var(--forest);
+    }
+
+    .categories-copy .studio-button:hover {
+      background: var(--moss);
+    }
+
+    .category-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid #e2d9cb;
+    }
+
+    .category-row {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid #e2d9cb;
+      transition: background 0.25s, padding-left 0.25s;
+    }
+
+    .category-row:hover {
+      background: var(--white);
+      padding-left: 16px;
+    }
+
+    .category-row .cat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--forest);
+      color: var(--amber-bright);
+      display: grid;
+      place-items: center;
+    }
+
+    .category-row .cat-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .category-row h4 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      text-transform: none;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 2px;
+    }
+
+    .category-row .cat-desc {
+      font-size: 0.84rem;
+      color: #5a554c;
+    }
+
+    .category-row .cat-count {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--rust);
+      white-space: nowrap;
+    }
+
+    /* ---------- SECTION F – TESTIMONIAL + CTA ---------- */
+    .testimonial-cta {
+      background: var(--white);
+      padding: 100px 0;
+    }
+
+    .testimonial-cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-panel {
+      background: var(--forest);
+      color: var(--white);
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .testimonial-panel::before {
+      content: "“";
+      font-family: var(--font-serif);
+      font-size: 9rem;
+      line-height: 0.6;
+      color: var(--amber-bright);
+      opacity: 0.3;
+      position: absolute;
+      top: 50px;
+      left: 44px;
+    }
+
+    .testimonial-panel blockquote {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--white);
+      margin-bottom: 26px;
+      position: relative;
+      text-transform: none;
+    }
+
+    .testimonial-panel blockquote em {
+      color: var(--amber-bright);
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    .testimonial-author .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--moss);
+      color: var(--amber-bright);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      border: 2px solid var(--amber-bright);
+    }
+
+    .testimonial-author .meta .name {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .testimonial-author .meta .role {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a8a094;
+    }
+
+    .cta-panel {
+      background: var(--rust);
+      color: var(--white);
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 2px, transparent 2px, transparent 20px);
+      pointer-events: none;
+    }
+
+    .cta-panel .eyebrow {
+      color: var(--forest-deep);
+      position: relative;
+    }
+
+    .cta-panel h3 {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      text-transform: none;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.15;
+      position: relative;
+    }
+
+    .cta-panel h3 em {
+      color: var(--forest-deep);
+      font-style: italic;
+    }
+
+    .cta-panel p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .cta-panel .studio-button {
+      background: var(--forest-deep);
+      color: var(--white);
+      align-self: flex-start;
+      min-height: 52px;
+      font-size: 0.86rem;
+      position: relative;
+    }
+
+    .cta-panel .studio-button:hover {
+      background: var(--forest);
+    }
+
+    .cta-panel .studio-button .arrow-disc {
+      background: var(--amber-bright);
+      color: var(--forest-deep);
+    }
+
+    /* ---------- FOOTER (exact copy from reference) ---------- */
+    .site-footer {
+      background: var(--forest);
+      color: #c5bfb4;
+      padding: 70px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.85fr 1fr 1.3fr;
+      gap: 40px;
+    }
+
+    .footer-grid .brand {
+      color: var(--white);
+      margin-bottom: 18px;
+      font-size: 1.8rem;
+    }
+
+    .footer-grid p {
+      color: #a8a094;
+      margin-bottom: 14px;
+      font-size: 0.85rem;
+    }
+
+    .footer-grid h3 {
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 22px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-grid > div > a:not(.brand) {
+      display: block;
+      color: #a8a094;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-grid > div > a:not(.brand):hover {
+      color: var(--amber-bright);
+    }
+
+    .footer-grid > div:last-child p {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: #a8a094;
+      margin-bottom: 12px;
+    }
+
+    .footer-grid p svg {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      color: var(--amber-bright);
+      margin-top: 3px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #3f4f3b;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--amber-bright);
+      transition: background 0.2s;
+    }
+
+    .social-links a:hover {
+      background: #2b3b27;
+    }
+
+    .social-links svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #3f4f3b;
+      margin-top: 40px;
+      padding-top: 24px;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: #8e877c;
+    }
+
+    .footer-bottom em {
+      display: block;
+      margin-top: 8px;
+      font-family: var(--font-display);
+      font-style: normal;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: var(--amber-bright);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1150px) {
+      .desktop-nav {
+        gap: 16px;
+        font-size: 0.76rem;
+      }
+      .desktop-nav .studio-button {
+        padding: 6px 12px;
+        font-size: 0.72rem;
+      }
+      .brand {
+        font-size: 1.5rem;
+      }
+      .brand-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 1.2rem;
+      }
+      .portfolio-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+      .portfolio-hero-photo {
+        height: 440px;
+      }
+      .portfolio-hero-badge {
+        left: 20px;
+      }
+      .featured-header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .featured-split {
+        grid-template-columns: 1fr;
+      }
+      .featured-image {
+        min-height: 380px;
+      }
+      .project-masonry {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .project-tile.wide {
+        grid-column: span 2;
+      }
+      .before-after-header {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .ba-grid {
+        grid-template-columns: 1fr;
+      }
+      .portfolio-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .testimonial-cta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .desktop-nav {
+        display: none;
+      }
+      .mobile-toggle {
+        display: inline-flex;
+      }
+      .site-header {
+        left: 16px;
+        right: 16px;
+        top: 12px;
+      }
+      .mobile-nav:not([hidden]) { display: flex !important; }
+      .portfolio-hero {
+        padding: 130px 0 70px;
+      }
+      .project-masonry {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 240px;
+      }
+      .project-tile.tall {
+        grid-row: span 1;
+      }
+      .project-tile.wide {
+        grid-column: span 1;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+      }
+      .nav-island {
+        min-height: 58px;
+        padding: 8px 16px;
+      }
+      .brand {
+        font-size: 1.3rem;
+      }
+      .brand-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+      }
+      .portfolio-hero {
+        padding: 110px 0 60px;
+      }
+      .portfolio-hero-copy h1 {
+        font-size: 2.7rem;
+      }
+      .portfolio-hero-photo {
+        height: 340px;
+      }
+      .portfolio-hero-badge {
+        left: 12px;
+        bottom: -14px;
+        padding: 16px 20px;
+      }
+      .portfolio-hero-badge .big {
+        font-size: 2.1rem;
+      }
+      .page-container {
+        padding: 0 20px;
+      }
+      .section-space {
+        padding: 60px 0;
+      }
+      .ba-images figure {
+        height: 160px;
+      }
+      .portfolio-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .portfolio-stat-item .num {
+        font-size: 2.4rem;
+      }
+      .category-row {
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+      }
+      .category-row .cat-count {
+        display: none;
+      }
+      .testimonial-panel,
+      .cta-panel {
+        padding: 40px 26px;
+      }
+      .testimonial-panel blockquote {
+        font-size: 1.3rem;
+      }
+      .cta-panel h3 {
+        font-size: 1.7rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .footer-grid > div:first-child,
+      .footer-grid > div:last-child {
+        grid-column: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  
+  /* ==================== GLOBAL DARK MODE ENGINE ==================== */
+  .dark {
+    color-scheme: dark;
+  }
+  .dark body {
+    background-color: #121c11 !important;
+    color: #e5e0d8 !important;
+  }
+  .dark .site-header .nav-island {
+    background: rgba(26, 38, 24, 0.95) !important;
+    border-color: rgba(122, 143, 107, 0.3) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+  }
+  .dark .brand {
+    color: #fcfbf9 !important;
+  }
+  .dark .desktop-nav > a,
+  .dark .desktop-nav summary {
+    color: #ded9cf !important;
+  }
+  .dark .desktop-nav > a:hover,
+  .dark .desktop-nav summary:hover,
+  .dark .desktop-nav .active {
+    color: var(--amber-bright) !important;
+  }
+  .dark .dropdown-content {
+    background: #1e2b1c !important;
+    border-color: rgba(122, 143, 107, 0.3) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+  }
+  .dark .dropdown-content a {
+    color: #e2ddd5 !important;
+  }
+  .dark .dropdown-content a:hover {
+    background: #2a3b27 !important;
+    color: var(--amber-bright) !important;
+  }
+  .dark .circle-button {
+    border-color: rgba(122, 143, 107, 0.35) !important;
+    color: #e2ddd5 !important;
+  }
+  .dark .circle-button:hover {
+    background: #2a3b27 !important;
+    color: var(--amber-bright) !important;
+  }
+  .dark .navigation-button {
+    color: #e2ddd5 !important;
+  }
+  .dark .mobile-nav {
+    background: #1c281a !important;
+    border-color: rgba(122, 143, 107, 0.3) !important;
+    color: #e2ddd5 !important;
+  }
+  .dark .mobile-nav a {
+    color: #e2ddd5 !important;
+  }
+  .dark h1, .dark h2, .dark h3, .dark h4 {
+    color: #f5f2eb !important;
+  }
+  .dark p {
+    color: #c9c4ba !important;
+  }
+  .dark section,
+  .dark .about-hero,
+  .dark .story-section,
+  .dark .values-section,
+  .dark .crew-section,
+  .dark .trust-section,
+  .dark .contact-hero,
+  .dark .contact-section,
+  .dark .faq-section,
+  .dark .services-showcase,
+  .dark .process-section,
+  .dark .stats-section,
+  .dark .portfolio-grid-section,
+  .dark .portfolio-hero,
+  .dark .transformation-section,
+  .dark .cta-section {
+    background-color: #121c11 !important;
+  }
+  .dark .values-card,
+  .dark .crew-card,
+  .dark .faq-item,
+  .dark .trust-card,
+  .dark .service-card,
+  .dark .stat-box,
+  .dark .contact-method-card,
+  .dark .contact-form-wrapper,
+  .dark .transformation-card,
+  .dark .portfolio-card,
+  .dark .project-card {
+    background-color: #1c291a !important;
+    border-color: rgba(122, 143, 107, 0.25) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+  }
+  .dark .input-wrap input,
+  .dark .input-wrap select,
+  .dark .input-wrap textarea,
+  .dark .form-field input,
+  .dark .form-field select,
+  .dark .form-field textarea {
+    background-color: #121c11 !important;
+    border-color: rgba(122, 143, 107, 0.3) !important;
+    color: #ffffff !important;
+  }
+  .dark .input-wrap label,
+  .dark .form-field label {
+    color: #d4cec4 !important;
+  }
+  .dark .site-footer {
+    background-color: #0d140c !important;
+    border-top: 1px solid rgba(122, 143, 107, 0.2) !important;
+  }
+  .dark .footer-grid h3 {
+    color: #ffffff !important;
+  }
+  .dark .footer-bottom {
+    border-top-color: rgba(122, 143, 107, 0.2) !important;
+  }
+
+/* HOME1 SIGNIN BUTTON STANDARDIZATION */
+
+    .studio-button {
+      background: var(--amber) !important;
+      color: var(--white) !important;
+      border: 0 !important;
+      border-radius: 6px !important;
+      min-height: 44px !important;
+      padding: 8px 20px !important;
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      box-shadow: none !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+
+    .studio-button:hover {
+      background: var(--amber-bright) !important;
+      transform: translateY(-1px) !important;
+      color: var(--white) !important;
+    }
+
+    .arrow-disc {
+      width: 28px !important;
+      height: 28px !important;
+      border-radius: 50% !important;
+      background: rgba(255, 255, 255, 0.2) !important;
+      display: grid !important;
+      place-items: center !important;
+      flex-shrink: 0 !important;
+    }
+
+    .arrow-disc svg {
+      width: 15px !important;
+      height: 15px !important;
+    }
+
+</style>
+
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+
+</head>
+<body>
+
+  <!-- ========== HEADER (exact copy from reference) ========== -->
+  <header class="site-header">
+    <nav class="nav-island" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Timber & Tonic — Home">
+        <span class="brand-icon">🌲</span>
+        TIMBER &amp; TONIC
+      </a>
+
+      <div class="desktop-nav">
+        <details class="nav-dropdown">
+          <summary>Home <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="dropdown-content">
+            <a href="index.html#home">Home 1</a>
+            <a href="home2.html">Home 2</a>
+          </div>
+        </details>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="contact.html">Contact</a>
+        <details class="nav-dropdown">
+          <summary>Dashboard <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="dropdown-content">
+            <a href="admin.html">Studio Admin</a>
+            <a href="client.html">Member Portal</a>
+          </div>
+        </details>
+        <a href="login.html" class="studio-button">Sign In <span class="arrow-disc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+        <div class="nav-toggles">
+          <button class="circle-button" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+          </button>
+          <button class="circle-button" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <button class="navigation-button mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========== PORTFOLIO HERO – SPLIT BANNER WITH OFFSET STATS ========== -->
+    <section class="portfolio-hero" id="home">
+      <div class="page-container portfolio-hero-grid">
+        <div class="portfolio-hero-copy">
+          <div class="portfolio-hero-tagline">
+            <span></span>
+            Our Work &bull; Real Projects
+          </div>
+          <h1>
+            Proof in<br>
+            <em>every cut.</em><br>
+            Every cleanup.
+          </h1>
+          <p>
+            From emergency storm removals to delicate ornamental pruning, we've tackled thousands of tree care projects across the region. Here's a look at some of our favorites.
+          </p>
+          <div class="portfolio-hero-filters">
+            <button class="active">All Projects</button>
+            <button>Trimming</button>
+            <button>Removal</button>
+            <button>Stump Grinding</button>
+            <button>Storm Response</button>
+          </div>
+        </div>
+        <div class="portfolio-hero-photo">
+          <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=2070&auto=format&fit=crop" alt="Arborist team working on a large tree">
+          <div class="portfolio-hero-badge">
+            <div class="big">12k</div>
+            <div class="small">Trees cared for since 1987</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION A – FEATURED PROJECT (large split) ========== -->
+    <section class="featured-project" id="featured">
+      <div class="page-container">
+        <div class="featured-header">
+          <div>
+            <span class="eyebrow">01 / FEATURED PROJECT</span>
+            <h2>The oak that<br><em>almost won.</em></h2>
+          </div>
+          <p>A massive 120-year-old white oak was threatening a family home after a severe storm. Here's how our crew handled it safely and cleanly.</p>
+        </div>
+        <div class="featured-split">
+          <div class="featured-image">
+            <span class="project-label">Storm Removal &bull; Cedar Ridge</span>
+            <img src="https://images.unsplash.com/photo-1590682680695-43b964a3ae17?q=80&w=2070&auto=format&fit=crop" alt="Large oak tree removal project">
+            <span class="image-credit">Crane-assisted removal in under 6 hours</span>
+          </div>
+          <div class="featured-details">
+            <span class="eyebrow">CASE STUDY</span>
+            <h3>120-Year-Old White Oak Removal</h3>
+            <p>A severe summer storm split the main trunk of a massive white oak, leaving it leaning dangerously toward a family home. Our emergency crew was on-site within two hours.</p>
+            <div class="project-meta">
+              <div class="meta-row">
+                <span class="meta-label">Location</span>
+                <span class="meta-value">Cedar Ridge, NY</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Service</span>
+                <span class="meta-value">Emergency Removal</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Duration</span>
+                <span class="meta-value">6 hours (same day)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Crew Size</span>
+                <span class="meta-value">5 arborists + crane</span>
+              </div>
+            </div>
+            <a class="studio-button" href="contact.html">
+              Discuss a similar project
+              <span class="arrow-disc">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION B – PROJECT GRID (masonry-style) ========== -->
+    <section class="project-grid-section" id="projects">
+      <div class="page-container">
+        <div class="project-grid-header">
+          <span class="eyebrow">02 / RECENT WORK</span>
+          <h2>A few of our<br><em>favorite jobs.</em></h2>
+          <p>Browse a selection of completed projects. Every one tells a story of care, precision, and a happy client.</p>
+        </div>
+        <div class="project-masonry">
+          <div class="project-tile tall">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=2070&auto=format&fit=crop" alt="Tree trimming project">
+            <div class="tile-overlay"></div>
+            <div class="tile-info">
+              <span class="tile-cat">Trimming</span>
+              <h3>Estate Canopy Restoration</h3>
+              <span class="tile-location">Greenwich, CT</span>
+            </div>
+          </div>
+          <div class="project-tile">
+            <img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=2070&auto=format&fit=crop" alt="Technical evergreen canopy management project">
+            <div class="tile-overlay"></div>
+            <div class="tile-info">
+              <span class="tile-cat">Removal</span>
+              <h3>Hazardous Elm Takedown</h3>
+              <span class="tile-location">Brooklyn, NY</span>
+            </div>
+          </div>
+          <div class="project-tile">
+            <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?q=80&w=2070&auto=format&fit=crop" alt="Stump grinding project">
+            <div class="tile-overlay"></div>
+            <div class="tile-info">
+              <span class="tile-cat">Stump Grinding</span>
+              <h3>Backyard Clearing</h3>
+              <span class="tile-location">Queens, NY</span>
+            </div>
+          </div>
+          <div class="project-tile wide">
+            <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?q=80&w=2070&auto=format&fit=crop" alt="Storm response project">
+            <div class="tile-overlay"></div>
+            <div class="tile-info">
+              <span class="tile-cat">Storm Response</span>
+              <h3>Post-Storm Neighborhood Cleanup</h3>
+              <span class="tile-location">Staten Island, NY</span>
+            </div>
+          </div>
+          <div class="project-tile">
+            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2070&auto=format&fit=crop" alt="Tree health care project">
+            <div class="tile-overlay"></div>
+            <div class="tile-info">
+              <span class="tile-cat">Plant Health</span>
+              <h3>Disease Recovery Program</h3>
+              <span class="tile-location">Manhattan, NY</span>
+            </div>
+          </div>
+          <div class="project-tile">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Tree pruning project">
+            <div class="tile-overlay"></div>
+            <div class="tile-info">
+              <span class="tile-cat">Trimming</span>
+              <h3>Row of Street Tree Pruning</h3>
+              <span class="tile-location">Hoboken, NJ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION C – BEFORE & AFTER ========== -->
+    <section class="before-after-section" id="before-after">
+      <div class="page-container">
+        <div class="before-after-header">
+          <div>
+            <span class="eyebrow">03 / BEFORE &amp; AFTER</span>
+            <h2>See the<br><em>transformation.</em></h2>
+          </div>
+          <p>Some jobs speak for themselves. Here's a side-by-side look at a few of our most dramatic transformations.</p>
+        </div>
+        <div class="ba-grid">
+          <div class="ba-card">
+            <div class="ba-images">
+              <figure data-label="Before">
+                <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?q=80&w=2070&auto=format&fit=crop" alt="Before tree trimming">
+              </figure>
+              <span class="ba-divider"></span>
+              <figure class="after" data-label="After">
+                <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2070&auto=format&fit=crop" alt="After tree trimming">
+              </figure>
+            </div>
+            <div class="ba-content">
+              <h3>Overgrown Backyard Revival</h3>
+              <span class="ba-loc">Queens, NY &bull; Trimming + Stump Grinding</span>
+              <p>Years of neglect left this backyard completely unusable. We cleared the overgrowth, trimmed back the canopy, and ground the stumps — now it's a usable family space again.</p>
+            </div>
+          </div>
+          <div class="ba-card">
+            <div class="ba-images">
+              <figure data-label="Before">
+                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2070&auto=format&fit=crop" alt="Before tree removal">
+              </figure>
+              <span class="ba-divider"></span>
+              <figure class="after" data-label="After">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2074&auto=format&fit=crop" alt="After tree removal">
+              </figure>
+            </div>
+            <div class="ba-content">
+              <h3>Hazardous Tree Removal</h3>
+              <span class="ba-loc">Brooklyn, NY &bull; Emergency Removal</span>
+              <p>A dead oak was leaning precariously over a garage. Our crew removed it safely in a single day and cleaned up the entire site — the homeowner couldn't believe the difference.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION D – STATS BAND ========== -->
+    <section class="portfolio-stats" id="stats">
+      <div class="portfolio-stats-bg">
+        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=2070&auto=format&fit=crop" alt="Forest canopy from below">
+      </div>
+      <div class="page-container portfolio-stats-inner">
+        <h2>Three decades of work,<br><em>measured in numbers.</em></h2>
+        <div class="portfolio-stats-grid">
+          <div class="portfolio-stat-item">
+            <div class="num">12k</div>
+            <span class="lbl">Trees Cared For</span>
+          </div>
+          <div class="portfolio-stat-item">
+            <div class="num">3.2k</div>
+            <span class="lbl">Removals Completed</span>
+          </div>
+          <div class="portfolio-stat-item">
+            <div class="num">100%</div>
+            <span class="lbl">Satisfaction Rate</span>
+          </div>
+          <div class="portfolio-stat-item">
+            <div class="num">37+</div>
+            <span class="lbl">Years in Business</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION E – CATEGORIES / SERVICES USED ========== -->
+    <section class="categories-section" id="categories">
+      <div class="page-container categories-grid">
+        <div class="categories-copy">
+          <span class="eyebrow">04 / WHAT WE'VE DONE</span>
+          <h2>Project types<br><em>we specialize in.</em></h2>
+          <p>Every project is different, but our commitment to safety, precision, and a spotless cleanup never changes. Here's a breakdown of the work we do most often.</p>
+          <a class="studio-button" href="services.html">
+            Explore all services
+            <span class="arrow-disc">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+        <div class="category-rows">
+          <div class="category-row">
+            <div class="cat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>
+            </div>
+            <div>
+              <h4>Tree Trimming</h4>
+              <span class="cat-desc">Structural pruning, deadwood removal, crown thinning</span>
+            </div>
+            <span class="cat-count">4,800+ jobs</span>
+          </div>
+          <div class="category-row">
+            <div class="cat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div>
+              <h4>Tree Removal</h4>
+              <span class="cat-desc">Hazardous removals, lot clearing, crane-assisted takedowns</span>
+            </div>
+            <span class="cat-count">3,200+ jobs</span>
+          </div>
+          <div class="category-row">
+            <div class="cat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <h4>Stump Grinding</h4>
+              <span class="cat-desc">Full root removal, below-grade grinding, chip cleanup</span>
+            </div>
+            <span class="cat-count">2,400+ jobs</span>
+          </div>
+          <div class="category-row">
+            <div class="cat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <h4>Emergency Storm</h4>
+              <span class="cat-desc">24/7 rapid response, fallen trees, hanging limbs</span>
+            </div>
+            <span class="cat-count">1,100+ jobs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION F – TESTIMONIAL + CTA ========== -->
+    <section class="testimonial-cta" id="testimonials">
+      <div class="page-container">
+        <div class="testimonial-cta-grid">
+          <div class="testimonial-panel">
+            <blockquote>
+              They took down a massive oak that was threatening our roof — clean, professional, and they left the yard <em>spotless.</em> These guys are the real deal.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="avatar">MR</div>
+              <div class="meta">
+                <div class="name">Mark &amp; Susan R.</div>
+                <div class="role">Homeowners, Cedar Ridge</div>
+              </div>
+            </div>
+          </div>
+          <div class="cta-panel">
+            <span class="eyebrow">READY TO BE NEXT?</span>
+            <h3>Let's make your<br><em>project happen.</em></h3>
+            <p>Whether it's a routine trim or an emergency removal, we'd love to help. Schedule your free assessment today.</p>
+            <a class="studio-button" href="contact.html">
+              Book an assessment
+              <span class="arrow-disc">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER (exact copy from reference) ========== -->
+  <footer class="site-footer">
+    <div class="page-container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html" aria-label="Timber &amp; Tonic — Home">
+            <span class="brand-icon">🌲</span>
+            TIMBER &amp; TONIC
+          </a>
+          <p>Certified arborists dedicated to safe, sustainable tree care and storm response. Rugged service, rooted in expertise.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Quick Navigation</h3>
+          <a href="index.html#home">Home 1</a>
+          <a href="home2.html">Home 2</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="contact.html">Contact &amp; Booking</a>
+        </div>
+
+        <div>
+          <h3>Certified Services</h3>
+          <a href="services.html">Precision Tree Trimming</a>
+          <a href="services.html">Hazardous Tree Removal</a>
+          <a href="services.html">Stump Grinding &amp; Rooting</a>
+          <a href="services.html">Plant Health &amp; Deep Root Care</a>
+          <a href="services.html">24/7 Emergency Storm Dispatch</a>
+        </div>
+
+        <div>
+          <h3>Emergency Dispatch HQ</h3>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span dir="ltr">4800 Timberline Ridge, Valley HQ</span>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+            <span dir="ltr">+1 (800) 555-0199</span>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+            <span dir="ltr">hello@timberandtonic.com</span>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span dir="ltr">Mon-Sat: 7AM - 7PM (24/7 Storm Response)</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p dir="ltr">&copy; 2026 Timber &amp; Tonic Arborist Services. All rights reserved. Licensed, Bonded &amp; Insured.</p>
+        <em>ISA Certified Arborists &bull; 24/7 Storm Response &bull; Tree Preservation Excellence</em>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    const $ = (s) => document.querySelector(s);
+    const mobile = $('.mobile-toggle');
+    const desktop = $('.desktop-nav');
+    const panel = document.createElement('div');
+    panel.className = 'mobile-nav';
+    panel.hidden = true;
+    panel.innerHTML = desktop.innerHTML;
+    $('.site-header').append(panel);
+
+    mobile.onclick = () => {
+      panel.hidden = !panel.hidden;
+      mobile.setAttribute('aria-expanded', !panel.hidden);
+    };
+
+    panel.querySelectorAll('a[href^="#"]').forEach(a => a.onclick = () => {
+      panel.hidden = true;
+      mobile.setAttribute('aria-expanded', 'false');
+    });
+
+    
+    // global-mobile-toggle-delegation
+    document.addEventListener('click', (e) => {
+      const themeBtn = e.target.closest('[aria-label="Toggle Dark/Light Mode"]');
+      if (themeBtn && e.target.closest('.mobile-nav')) {
+        const isDark = document.documentElement.classList.toggle('dark');
+        document.body.classList.toggle('dark-mode', isDark);
+        localStorage.setItem('timber_theme', isDark ? 'dark' : 'light');
+        if (typeof syncThemeUI === 'function') syncThemeUI();
+      }
+      const rtlBtn = e.target.closest('[aria-label="Toggle RTL/LTR"]');
+      if (rtlBtn && e.target.closest('.mobile-nav')) {
+        const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+        const nextDir = isRTL ? 'ltr' : 'rtl';
+        document.documentElement.setAttribute('dir', nextDir);
+        localStorage.setItem('timber_dir', nextDir);
+      }
+    });
+
+    function syncThemeUI() {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('[aria-label="Toggle Dark/Light Mode"]').forEach(btn => {
+        btn.innerHTML = isDark
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>';
+      });
+    }
+
+    document.querySelectorAll('[aria-label="Toggle Dark/Light Mode"]').forEach(b => {
+      b.onclick = () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        syncThemeUI();
+      };
+    });
+    syncThemeUI();
+
+
+    document.querySelectorAll('[aria-label="Toggle RTL/LTR"]').forEach(b => b.onclick = () => {
+      document.documentElement.dir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl';
+    });
+
+    document.querySelectorAll('.studio-button').forEach(b => { b.onclick = (e) => { window.location.href = 'login.html'; }; });
+
+    document.addEventListener('click', (e) => {
+      if (!panel.hidden && !panel.contains(e.target) && e.target !== mobile && !mobile.contains(e.target)) {
+        panel.hidden = true;
+        mobile.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Portfolio filter buttons (visual only for demo)
+    document.querySelectorAll('.portfolio-hero-filters button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.portfolio-hero-filters button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

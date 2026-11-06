@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Timber &amp; Tonic Arborist Services</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'forest': 'rgba(var(--color-rgb-primary), <alpha-value>)',
+        'forest-light': 'rgba(var(--color-rgb-light), <alpha-value>)',
+        'forest-dark': 'rgba(var(--color-rgb-dark), <alpha-value>)',
+        'forest-bright': 'rgba(var(--color-rgb-bright), <alpha-value>)',
+        'rust': 'rgba(var(--color-rgb-rust), <alpha-value>)',
+        'amber-brand': 'rgba(var(--color-rgb-amber), <alpha-value>)',
+        'warm-bg': 'var(--color-bg-warm)',
+        'charcoal': 'rgba(45, 43, 38, <alpha-value>)',
+        'paper': '#efe8dc',
+        'dark-bg': '#131d11',
+        'dark-card': '#1e2b1c',
+        'dark-surface': '#2a3b27',
+      },
+      fontFamily: {
+        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'serif': ['Playfair Display', 'Georgia', 'serif'],
+        'display': ['Barlow Condensed', 'Impact', 'sans-serif'],
+      },
+    }
+  }
+};
+</script>
+<script>
+if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+if (localStorage.getItem('dir') === 'rtl') { document.documentElement.dir = 'rtl'; document.documentElement.lang = 'ar'; }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+:root {
+  --color-primary: #1e2b1c;
+  --color-primary-light: #3a5a35;
+  --color-primary-dark: #131d11;
+  --color-primary-bright: #7a8f6b;
+  --color-rust: #a8542c;
+  --color-amber: #c97f2e;
+  --color-bg-warm: #f3efe6;
+  --color-text-dark: #2d2b26;
+  --color-rgb-primary: 30, 43, 28;
+  --color-rgb-light: 58, 90, 53;
+  --color-rgb-dark: 19, 29, 17;
+  --color-rgb-bright: 122, 143, 107;
+  --color-rgb-rust: 168, 84, 44;
+  --color-rgb-amber: 201, 127, 46;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-warm);
+  color: var(--color-text-dark);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.dark body { background-color: #131d11; color: #e2ddd5; }
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.font-display { font-family: 'Barlow Condensed', Impact, sans-serif; font-weight: 700; }
+.gold-gradient-text {
+  background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 60%, var(--color-primary-dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dark .gold-gradient-text {
+  background: linear-gradient(135deg, #b8d0a8 0%, #7a8f6b 60%, #4f6b4a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dark .text-forest { color: var(--color-primary-bright) !important; }
+.dark .border-forest { border-color: var(--color-primary-bright) !important; }
+.dark .bg-forest { background-color: var(--color-primary-bright) !important; }
+
+/* Sidebar */
+.sidebar {
+  position: fixed; left: 0; top: 0; height: 100vh; width: 280px;
+  background: #ffffff; border-right: 1px solid rgba(var(--color-rgb-primary), 0.12);
+  transition: transform 0.3s ease; z-index: 100; overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+.dark .sidebar { background: #1e2b1c; border-right-color: rgba(var(--color-rgb-bright), 0.18); }
+@media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); } }
+[dir="rtl"] .sidebar { left: auto; right: 0; border-right: none; border-left: 1px solid rgba(var(--color-rgb-primary), 0.12); }
+@media (max-width: 768px) { [dir="rtl"] .sidebar { transform: translateX(100%); } [dir="rtl"] .sidebar.open { transform: translateX(0); } }
+
+.sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 99; display: none; }
+.sidebar-overlay.open { display: block; }
+.sidebar-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem 1.4rem; margin: 0.25rem 0.75rem;
+  border-radius: 8px; color: var(--color-text-dark);
+  transition: all 0.2s; cursor: pointer; font-weight: 500; font-size: 0.9rem;
+}
+.dark .sidebar-item { color: #e2ddd5; }
+.sidebar-item:hover { background: rgba(var(--color-rgb-primary), 0.08); color: var(--color-primary); }
+.dark .sidebar-item:hover { background: rgba(var(--color-rgb-bright), 0.12); color: var(--color-primary-bright); }
+.sidebar-item.active { background: var(--color-primary); color: #ffffff; font-weight: 600; box-shadow: 0 4px 12px rgba(var(--color-rgb-primary), 0.25); }
+.dark .sidebar-item.active { background: var(--color-primary-bright); color: #131d11; }
+.sidebar-item i { width: 22px; font-size: 1rem; }
+
+.main-content { margin-left: 280px; padding: 1.5rem; min-height: 100vh; }
+[dir="rtl"] .main-content { margin-left: 0; margin-right: 280px; }
+@media (max-width: 768px) { .main-content { margin-left: 0; margin-right: 0; padding-top: 75px; } }
+
+.mobile-header {
+  display: none; position: fixed; top: 0; left: 0; right: 0;
+  background: #ffffff; padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.12);
+  z-index: 50; align-items: center; justify-content: space-between;
+}
+.dark .mobile-header { background: #1e2b1c; border-bottom-color: rgba(var(--color-rgb-bright), 0.18); }
+@media (max-width: 768px) { .mobile-header { display: flex; } }
+
+.toggle-btn {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: rgba(var(--color-rgb-primary), 0.08);
+  color: var(--color-text-dark); display: inline-flex;
+  align-items: center; justify-content: center; cursor: pointer;
+  transition: all 0.2s; border: none; font-size: 0.95rem;
+}
+.dark .toggle-btn { background: rgba(var(--color-rgb-bright), 0.12); color: #e2ddd5; }
+.toggle-btn:hover { background: var(--color-primary); color: #ffffff; }
+.dark .toggle-btn:hover { background: var(--color-primary-bright); color: #131d11; }
+
+.card-design {
+  background: #ffffff; border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid #e2d9cb;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+.dark .card-design { background: #1e2b1c; border-color: rgba(var(--color-rgb-bright), 0.18); }
+.card-design:hover { border-color: var(--color-amber); }
+.dark .card-design:hover { border-color: var(--color-primary-bright); }
+
+.btn-primary-design {
+  background: var(--color-amber); color: #ffffff;
+  font-weight: 600; border-radius: 6px; transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(var(--color-rgb-amber), 0.25);
+  white-space: nowrap; border: none; cursor: pointer;
+  text-transform: uppercase; letter-spacing: 0.03em; font-size: 0.8rem;
+}
+.btn-primary-design:hover { background: #e89b3e; transform: translateY(-1px); color: #ffffff; }
+.dark .btn-primary-design { background: var(--color-amber); color: #131d11; }
+.dark .btn-primary-design:hover { background: #e89b3e; }
+
+.btn-outline-design {
+  border: 1.5px solid var(--color-primary); color: var(--color-primary);
+  background: transparent; border-radius: 6px; font-weight: 600;
+  transition: all 0.3s; white-space: nowrap; cursor: pointer;
+  text-transform: uppercase; letter-spacing: 0.03em; font-size: 0.78rem;
+}
+.btn-outline-design:hover { background: var(--color-primary); color: #ffffff; transform: translateY(-1px); }
+.dark .btn-outline-design { border-color: var(--color-primary-bright); color: var(--color-primary-bright); }
+.dark .btn-outline-design:hover { background: var(--color-primary-bright); color: #131d11; }
+
+.stat-card {
+  background: #ffffff; border-radius: 10px; padding: 1.25rem;
+  border: 1px solid #e2d9cb; transition: all 0.3s;
+}
+.dark .stat-card { background: #1e2b1c; border-color: rgba(var(--color-rgb-bright), 0.18); }
+.stat-card:hover { transform: translateY(-3px); border-color: var(--color-amber); }
+
+.status-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.68rem;
+  font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  white-space: nowrap; flex-shrink: 0; line-height: 1.2;
+}
+.status-confirmed, .status-active, .status-completed, .status-paid {
+  background: #e8f5eb; color: #1b5e2c;
+}
+.dark .status-confirmed, .dark .status-active, .dark .status-completed, .dark .status-paid {
+  background: #1b3d28; color: #a8ddae;
+}
+.status-requested, .status-installment, .status-scheduled {
+  background: #fef3e2; color: #b45309;
+}
+.dark .status-requested, .dark .status-installment, .dark .status-scheduled {
+  background: #45260a; color: #fcd34d;
+}
+.status-pending-payment, .status-urgent {
+  background: #fee2e2; color: #b91c1c;
+}
+.dark .status-pending-payment, .dark .status-urgent {
+  background: #450a0a; color: #fca5a5;
+}
+.status-in-progress {
+  background: #e0f2fe; color: #0369a1;
+}
+.dark .status-in-progress { background: #082f49; color: #7dd3fc; }
+
+.form-input {
+  width: 100%; padding: 0.75rem 1rem;
+  border-radius: 6px; border: 1.5px solid #d6cfc2;
+  background: #fdfbf7; transition: all 0.3s;
+  color: var(--color-text-dark); font-family: 'Inter', sans-serif;
+}
+.dark .form-input { background: #131d11; border-color: rgba(var(--color-rgb-bright), 0.22); color: #e2ddd5; }
+.form-input:focus { outline: none; border-color: var(--color-amber); box-shadow: 0 0 0 3px rgba(var(--color-rgb-amber), 0.15); }
+.dark .form-input:focus { border-color: var(--color-primary-bright); }
+
+.form-label {
+  display: block; font-size: 0.8rem; font-weight: 600;
+  margin-bottom: 0.35rem; color: var(--color-text-dark);
+}
+.dark .form-label { color: #e2ddd5; }
+
+.progress-bar {
+  background: #e2d9cb; border-radius: 9999px; height: 8px; overflow: hidden;
+}
+.dark .progress-bar { background: rgba(var(--color-rgb-bright), 0.15); }
+.progress-fill {
+  background: linear-gradient(90deg, var(--color-amber), #e89b3e);
+  height: 100%; border-radius: 9999px; transition: width 0.4s ease;
+}
+.dark .progress-fill { background: linear-gradient(90deg, var(--color-primary-bright), var(--color-amber)); }
+
+.thumb-square {
+  position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 1/1;
+  background: #d9cdb8;
+}
+.dark .thumb-square { background: #2a3b27; }
+.thumb-square img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.thumb-square:hover img { transform: scale(1.05); }
+.thumb-label {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 0.6rem 0.5rem;
+  background: linear-gradient(to top, rgba(19, 29, 17, 0.9) 0%, transparent 100%);
+  color: white; font-size: 0.78rem; font-weight: 600; text-align: center;
+}
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Mobile Header -->
+<header class="mobile-header">
+  <div class="flex items-center gap-2">
+    <button id="menuToggle" class="toggle-btn" aria-label="Toggle Navigation"><i class="fas fa-bars"></i></button>
+    <a href="index.html" class="flex items-center gap-2" dir="ltr">
+      <span class="text-2xl">🌲</span>
+      <span class="font-display text-xl font-bold tracking-wide">TIMBER &amp; TONIC</span>
+    </a>
+  </div>
+  <div class="flex items-center gap-2">
+    <button id="theme-toggle-mobile" class="toggle-btn" aria-label="Toggle Theme"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i></button>
+    <a href="login.html" class="toggle-btn" title="Sign Out"><i class="fas fa-sign-out-alt"></i></a>
+  </div>
+</header>
+
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<!-- Sidebar -->
+<aside id="sidebar" class="sidebar">
+  <div class="p-6 pb-4 border-b border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)] flex justify-between items-center">
+    <a href="index.html" class="flex flex-col items-start gap-1" dir="ltr">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🌲</span>
+        <span class="font-display text-xl font-bold tracking-wide">TIMBER &amp; TONIC</span>
+      </div>
+      <span class="block text-[10px] tracking-wider text-forest dark:text-forest-bright uppercase font-bold mt-1">Admin Operations Hub</span>
+    </a>
+  </div>
+
+  <div class="p-4 mx-3 my-3 rounded-lg bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)] flex items-center gap-3">
+    <div class="w-11 h-11 rounded-full bg-forest text-white flex items-center justify-center font-display font-bold text-base shadow-sm shrink-0">JM</div>
+    <div class="min-w-0 flex-1">
+      <p class="text-sm font-bold truncate">Jake Morrison</p>
+      <span class="inline-block text-[10px] px-2 py-0.5 rounded-full bg-amber-brand text-white font-semibold uppercase">Lead Arborist &amp; Owner</span>
+    </div>
+  </div>
+
+  <nav class="flex-1 py-2">
+    <div class="sidebar-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i><span>Operations Overview</span></div>
+    <div class="sidebar-item" data-page="jobs"><i class="fas fa-clipboard-list"></i><span>All Jobs &amp; Assessments</span></div>
+    <div class="sidebar-item" data-page="clients"><i class="fas fa-users"></i><span>Customers &amp; Properties</span></div>
+    <div class="sidebar-item" data-page="schedule"><i class="fas fa-calendar-alt"></i><span>Crew Scheduling</span></div>
+    <div class="sidebar-item" data-page="services"><i class="fas fa-tree"></i><span>Service Catalog</span></div>
+    <div class="sidebar-item" data-page="payments"><i class="fas fa-file-invoice-dollar"></i><span>Invoices &amp; Payments</span></div>
+    <div class="sidebar-item" data-page="messages"><i class="fas fa-comments"></i><span>Customer Messages</span></div>
+  </nav>
+
+  <div class="p-4 border-t border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)] space-y-1">
+    <a href="index.html" class="sidebar-item text-xs"><i class="fas fa-globe"></i><span>View Public Site</span></a>
+    <a href="login.html" class="sidebar-item text-xs text-red-600 dark:text-red-400"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="card-design p-4 md:p-6 flex justify-between items-center flex-wrap gap-4 mb-6">
+    <div>
+      <h1 class="text-2xl md:text-3xl font-bold" id="page-title">Operations Overview</h1>
+      <p class="text-sm text-charcoal/60 dark:text-gray-400" id="page-subtitle">Welcome back, Jake · Lead Arborist</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="theme-toggle" class="toggle-btn hidden md:inline-flex" title="Dark / Light mode">
+        <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+      </button>
+      <button onclick="navigateTo('jobs')" class="btn-primary-design px-4 py-2 inline-flex items-center gap-2">
+        <i class="fas fa-plus"></i> New Job / Assessment
+      </button>
+    </div>
+  </div>
+
+  <!-- ========== PAGE 1: DASHBOARD ========== -->
+  <section id="page-dashboard" class="page-content">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="stat-card">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Active Customers</p>
+            <p class="text-2xl font-bold font-display">184</p>
+          </div>
+          <div class="w-11 h-11 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] rounded-full flex items-center justify-center">
+            <i class="fas fa-users text-forest text-base"></i>
+          </div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Jobs In Progress</p>
+            <p class="text-2xl font-bold font-display">9</p>
+          </div>
+          <div class="w-11 h-11 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] rounded-full flex items-center justify-center">
+            <i class="fas fa-hard-hat text-forest text-base"></i>
+          </div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Pending Assessments</p>
+            <p class="text-2xl font-bold font-display">14</p>
+          </div>
+          <div class="w-11 h-11 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] rounded-full flex items-center justify-center">
+            <i class="fas fa-clipboard-check text-forest text-base"></i>
+          </div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Monthly Revenue</p>
+            <p class="text-2xl font-bold font-display text-forest">$48,290</p>
+          </div>
+          <div class="w-11 h-11 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] rounded-full flex items-center justify-center">
+            <i class="fas fa-dollar-sign text-forest text-base"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="card-design p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-bold text-xl">Today's Job Board</h3>
+          <span class="text-xs text-forest font-bold cursor-pointer hover:underline" onclick="navigateTo('jobs')">View All &rarr;</span>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between gap-3 pb-3 border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.1)]">
+            <div class="flex items-start gap-3 min-w-0 flex-1">
+              <i class="fas fa-tree text-forest mt-1 shrink-0"></i>
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-semibold truncate">120-Year Oak Removal — Cedar Ridge</p>
+                <p class="text-xs text-charcoal/60 dark:text-gray-400 truncate">8:00 AM · Crew Alpha · Crane Assist</p>
+              </div>
+            </div>
+            <span class="status-badge status-in-progress">In Progress</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 pb-3 border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.1)]">
+            <div class="flex items-start gap-3 min-w-0 flex-1">
+              <i class="fas fa-cut text-forest mt-1 shrink-0"></i>
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-semibold truncate">Canopy Restoration — Greenwich Estate</p>
+                <p class="text-xs text-charcoal/60 dark:text-gray-400 truncate">10:30 AM · Crew Beta · Structural Pruning</p>
+              </div>
+            </div>
+            <span class="status-badge status-scheduled">Scheduled</span>
+          </div>
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex items-start gap-3 min-w-0 flex-1">
+              <i class="fas fa-bolt text-forest mt-1 shrink-0"></i>
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-semibold truncate">Emergency Storm Cleanup — Staten Island</p>
+                <p class="text-xs text-charcoal/60 dark:text-gray-400 truncate">ASAP · Emergency Crew · Fallen Elm</p>
+              </div>
+            </div>
+            <span class="status-badge status-urgent">Urgent</span>
+          </div>
+        </div>
+        <button onclick="navigateTo('jobs')" class="btn-outline-design w-full mt-5 py-2 text-sm">Open Full Job Board</button>
+      </div>
+
+      <div class="card-design p-6">
+        <h3 class="font-bold text-xl mb-4">Admin Quick Actions</h3>
+        <div class="space-y-3">
+          <button onclick="navigateTo('jobs')" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] text-charcoal dark:text-white rounded-lg hover:bg-[rgba(var(--color-rgb-primary),0.15)] transition flex items-center gap-3">
+            <i class="fas fa-clipboard-check text-forest"></i><span>Review Pending Assessments (14)</span>
+          </button>
+          <button onclick="navigateTo('schedule')" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] text-charcoal dark:text-white rounded-lg hover:bg-[rgba(var(--color-rgb-primary),0.15)] transition flex items-center gap-3">
+            <i class="fas fa-calendar-alt text-forest"></i><span>Assign Crews to Scheduled Jobs</span>
+          </button>
+          <button onclick="navigateTo('payments')" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] text-charcoal dark:text-white rounded-lg hover:bg-[rgba(var(--color-rgb-primary),0.15)] transition flex items-center gap-3">
+            <i class="fas fa-file-invoice-dollar text-forest"></i><span>Track Outstanding Invoices</span>
+          </button>
+          <button onclick="navigateTo('messages')" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] text-charcoal dark:text-white rounded-lg hover:bg-[rgba(var(--color-rgb-primary),0.15)] transition flex items-center gap-3">
+            <i class="fas fa-comments text-forest"></i><span>Review Customer Messages (3 New)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE 2: ALL JOBS & ASSESSMENTS ========== -->
+  <section id="page-jobs" class="page-content hidden">
+    <div class="card-design p-6">
+      <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+        <div>
+          <h3 class="font-bold text-2xl">All Jobs &amp; Assessments</h3>
+          <p class="text-sm text-charcoal/60 dark:text-gray-400">Manage requested assessments, scheduled trims, removals, and emergency calls.</p>
+        </div>
+        <button onclick="alert('Open New Job Modal...')" class="btn-primary-design px-4 py-2"><i class="fas fa-plus mr-1"></i> New Job</button>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-lg border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <p class="font-bold text-lg">120-Year-Old White Oak Removal</p>
+              <p class="text-sm text-charcoal/60 dark:text-gray-400">Cedar Ridge · 5th Ave Luxury Tower · Customer: Mark &amp; Susan R.</p>
+              <div class="flex items-center gap-3 mt-2">
+                <span class="status-badge status-in-progress">In Progress</span>
+                <span class="text-xs text-charcoal/60 dark:text-gray-400">Scheduled May 20 · Crew Alpha + Crane</span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="alert('Job status updated.')" class="btn-outline-design text-xs px-4 py-1.5"><i class="fas fa-edit mr-1"></i>Update</button>
+              <button onclick="alert('Showing job log for Cedar Ridge oak.')" class="btn-primary-design text-xs px-4 py-1.5"><i class="fas fa-eye mr-1"></i>Details</button>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="grid grid-cols-4 text-[10px] sm:text-xs text-charcoal/60 dark:text-gray-400 mb-1.5 font-medium">
+              <span class="text-left">Assessment</span><span class="text-center">Quote</span><span class="text-center">Scheduled</span><span class="text-right">Complete</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+          </div>
+        </div>
+
+        <div class="p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-lg border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <p class="font-bold text-lg">Emergency Storm Cleanup — Fallen Elm</p>
+              <p class="text-sm text-charcoal/60 dark:text-gray-400">Staten Island · Customer: Isabella Chen</p>
+              <div class="flex items-center gap-3 mt-2">
+                <span class="status-badge status-urgent">Urgent</span>
+                <span class="text-xs text-charcoal/60 dark:text-gray-400">Called in May 18 · Emergency crew dispatched</span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="alert('Emergency crew ETA updated.')" class="btn-outline-design text-xs px-4 py-1.5"><i class="fas fa-bolt mr-1"></i>Dispatch</button>
+              <button onclick="alert('Showing storm job details.')" class="btn-primary-design text-xs px-4 py-1.5"><i class="fas fa-eye mr-1"></i>Details</button>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="grid grid-cols-4 text-[10px] sm:text-xs text-charcoal/60 dark:text-gray-400 mb-1.5 font-medium">
+              <span class="text-left">Reported</span><span class="text-center">Dispatched</span><span class="text-center">In Progress</span><span class="text-right">Cleared</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div>
+          </div>
+        </div>
+
+        <div class="p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-lg border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <p class="font-bold text-lg">Canopy Restoration — Greenwich Estate</p>
+              <p class="text-sm text-charcoal/60 dark:text-gray-400">Greenwich, CT · Customer: Estate HOA</p>
+              <div class="flex items-center gap-3 mt-2">
+                <span class="status-badge status-scheduled">Scheduled</span>
+                <span class="text-xs text-charcoal/60 dark:text-gray-400">Scheduled May 22 · Crew Beta · Structural Pruning</span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="alert('Crew assignment saved.')" class="btn-outline-design text-xs px-4 py-1.5"><i class="fas fa-users mr-1"></i>Assign</button>
+              <button onclick="alert('Showing estate details.')" class="btn-primary-design text-xs px-4 py-1.5"><i class="fas fa-eye mr-1"></i>Details</button>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="grid grid-cols-4 text-[10px] sm:text-xs text-charcoal/60 dark:text-gray-400 mb-1.5 font-medium">
+              <span class="text-left">Assessment</span><span class="text-center">Quote</span><span class="text-center">Scheduled</span><span class="text-right">Complete</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE 3: CUSTOMERS & PROPERTIES ========== -->
+  <section id="page-clients" class="page-content hidden">
+    <div class="card-design p-6">
+      <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+        <div>
+          <h3 class="font-bold text-2xl">Customers &amp; Properties</h3>
+          <p class="text-sm text-charcoal/60 dark:text-gray-400">Directory of residential and commercial tree care clients.</p>
+        </div>
+        <button onclick="alert('Add Customer dialog open...')" class="btn-primary-design px-4 py-2"><i class="fas fa-user-plus mr-1"></i> Add Customer</button>
+      </div>
+
+      <div class="space-y-3">
+        <div class="card-design p-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-forest text-white flex items-center justify-center font-display font-bold shrink-0">MR</div>
+            <div>
+              <p class="font-bold">Mark &amp; Susan Reynolds</p>
+              <p class="text-xs text-charcoal/60 dark:text-gray-400">Cedar Ridge · 2 properties · Client since 2023</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 flex-nowrap">
+            <span class="status-badge status-active">Active</span>
+            <span class="text-sm font-bold text-forest">$2,400 LTV</span>
+            <button onclick="alert('Viewing customer profile...')" class="text-sm font-semibold text-forest hover:underline">View Profile</button>
+          </div>
+        </div>
+
+        <div class="card-design p-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-forest-light text-white flex items-center justify-center font-display font-bold shrink-0">IC</div>
+            <div>
+              <p class="font-bold">Isabella Chen</p>
+              <p class="text-xs text-charcoal/60 dark:text-gray-400">Staten Island · 1 property · Storm claim May 2026</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 flex-nowrap">
+            <span class="status-badge status-requested">Emergency</span>
+            <span class="text-sm font-bold text-forest">$850 Open</span>
+            <button onclick="alert('Viewing customer profile...')" class="text-sm font-semibold text-forest hover:underline">View Profile</button>
+          </div>
+        </div>
+
+        <div class="card-design p-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-forest-dark text-white flex items-center justify-center font-display font-bold shrink-0">EH</div>
+            <div>
+              <p class="font-bold">Greenwich Estate HOA</p>
+              <p class="text-xs text-charcoal/60 dark:text-gray-400">Greenwich, CT · 14 properties · Annual maintenance contract</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 flex-nowrap">
+            <span class="status-badge status-active">Contract</span>
+            <span class="text-sm font-bold text-forest">$12,000 LTV</span>
+            <button onclick="alert('Viewing commercial profile...')" class="text-sm font-semibold text-forest hover:underline">View Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE 4: CREW SCHEDULING ========== -->
+  <section id="page-schedule" class="page-content hidden">
+    <div class="card-design p-6">
+      <h3 class="font-bold text-2xl mb-2">Crew Scheduling</h3>
+      <p class="text-sm text-charcoal/60 dark:text-gray-400 mb-6">Assign lead arborists and crew members to scheduled jobs.</p>
+      <div class="space-y-4">
+        <div class="p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-lg border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="flex flex-wrap justify-between items-center gap-3">
+            <div>
+              <p class="font-bold">120-Year-Old White Oak Removal</p>
+              <p class="text-sm text-charcoal/60 dark:text-gray-400">Cedar Ridge · Scheduled May 20, 8:00 AM</p>
+            </div>
+            <div class="flex gap-2">
+              <select class="form-input text-sm py-1.5 px-3 w-auto">
+                <option>Jake Morrison (Lead Arborist)</option>
+                <option>Sarah Reynolds (Climber)</option>
+                <option>Danny Torres (Plant Health)</option>
+              </select>
+              <button onclick="alert('Crew assignment saved!')" class="btn-primary-design text-sm px-4 py-1.5">Save</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-lg border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="flex flex-wrap justify-between items-center gap-3">
+            <div>
+              <p class="font-bold">Canopy Restoration — Greenwich Estate</p>
+              <p class="text-sm text-charcoal/60 dark:text-gray-400">Greenwich, CT · Scheduled May 22, 10:30 AM</p>
+            </div>
+            <div class="flex gap-2">
+              <select class="form-input text-sm py-1.5 px-3 w-auto">
+                <option>Sarah Reynolds (Climber)</option>
+                <option>Jake Morrison (Lead Arborist)</option>
+                <option>Danny Torres (Plant Health)</option>
+              </select>
+              <button onclick="alert('Crew assignment saved!')" class="btn-primary-design text-sm px-4 py-1.5">Save</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-lg border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="flex flex-wrap justify-between items-center gap-3">
+            <div>
+              <p class="font-bold">Emergency Storm Cleanup — Staten Island</p>
+              <p class="text-sm text-charcoal/60 dark:text-gray-400">Staten Island · Called in May 18, urgent response</p>
+            </div>
+            <div class="flex gap-2">
+              <select class="form-input text-sm py-1.5 px-3 w-auto">
+                <option selected>Jake Morrison (Lead Arborist)</option>
+                <option>Sarah Reynolds (Climber)</option>
+                <option>Danny Torres (Plant Health)</option>
+              </select>
+              <button onclick="alert('Crew assignment saved!')" class="btn-primary-design text-sm px-4 py-1.5">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE 5: SERVICE CATALOG ========== -->
+  <section id="page-services" class="page-content hidden">
+    <div class="card-design p-6">
+      <div class="flex flex-wrap justify-between items-center gap-3 mb-6">
+        <div>
+          <h3 class="font-bold text-2xl">Service Catalog</h3>
+          <p class="text-sm text-charcoal/60 dark:text-gray-400 mt-1">Manage your published tree care services and pricing.</p>
+        </div>
+        <button onclick="alert('Service add dialog ready.')" class="btn-primary-design px-4 py-2"><i class="fas fa-plus mr-1"></i> Add Service</button>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="thumb-square">
+          <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=600&auto=format&fit=crop" alt="Tree Trimming">
+          <div class="thumb-label">Tree Trimming</div>
+        </div>
+        <div class="thumb-square">
+          <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?q=80&w=600&auto=format&fit=crop" alt="Tree Removal">
+          <div class="thumb-label">Tree Removal</div>
+        </div>
+        <div class="thumb-square">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600&auto=format&fit=crop" alt="Stump Grinding">
+          <div class="thumb-label">Stump Grinding</div>
+        </div>
+        <div class="thumb-square">
+          <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=600&auto=format&fit=crop" alt="Emergency Storm">
+          <div class="thumb-label">Emergency Storm</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE 6: INVOICES & PAYMENTS ========== -->
+  <section id="page-payments" class="page-content hidden">
+    <div class="card-design p-6">
+      <h3 class="font-bold text-2xl mb-4">Invoices &amp; Payments</h3>
+      <p class="text-sm text-charcoal/60 dark:text-gray-400 mb-6">Review job invoices, deposits, and payment statements.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.15)] text-charcoal/70 dark:text-gray-300">
+              <th class="text-left py-2.5 px-3 font-semibold">Customer</th>
+              <th class="text-left py-2.5 px-3 font-semibold">Job / Service</th>
+              <th class="text-left py-2.5 px-3 font-semibold">Total</th>
+              <th class="text-left py-2.5 px-3 font-semibold">Paid</th>
+              <th class="text-left py-2.5 px-3 font-semibold">Status</th>
+              <th class="text-left py-2.5 px-3 font-semibold">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+              <td class="py-3 px-3 font-medium">Mark &amp; Susan R.</td>
+              <td class="py-3 px-3">White Oak Removal — Cedar Ridge</td>
+              <td class="py-3 px-3 font-bold">$2,400.00</td>
+              <td class="py-3 px-3 text-green-600 dark:text-green-400 font-semibold">$1,200.00 (Deposit)</td>
+              <td class="py-3 px-3"><span class="status-badge status-installment">Deposit Paid</span></td>
+              <td class="py-3 px-3"><button onclick="alert('Downloading invoice...')" class="text-forest hover:opacity-80 p-1"><i class="fas fa-download"></i></button></td>
+            </tr>
+            <tr class="border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+              <td class="py-3 px-3 font-medium">Greenwich Estate HOA</td>
+              <td class="py-3 px-3">Canopy Restoration — Annual Contract</td>
+              <td class="py-3 px-3 font-bold">$12,000.00</td>
+              <td class="py-3 px-3 text-green-600 dark:text-green-400 font-semibold">$12,000.00</td>
+              <td class="py-3 px-3"><span class="status-badge status-paid">Paid</span></td>
+              <td class="py-3 px-3"><button onclick="alert('Downloading invoice...')" class="text-forest hover:opacity-80 p-1"><i class="fas fa-download"></i></button></td>
+            </tr>
+            <tr class="border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+              <td class="py-3 px-3 font-medium">Isabella Chen</td>
+              <td class="py-3 px-3">Emergency Storm Cleanup — Staten Island</td>
+              <td class="py-3 px-3 font-bold">$850.00</td>
+              <td class="py-3 px-3 text-red-600 dark:text-red-400 font-semibold">$0.00</td>
+              <td class="py-3 px-3"><span class="status-badge status-pending-payment">Pending</span></td>
+              <td class="py-3 px-3"><button onclick="alert('Downloading invoice...')" class="text-forest hover:opacity-80 p-1"><i class="fas fa-download"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <button onclick="alert('Generating monthly invoices batch...')" class="btn-primary-design px-5 py-2.5 inline-flex items-center gap-2">
+          <i class="fas fa-file-invoice"></i> Batch Generate Invoices
+        </button>
+        <button onclick="alert('Exporting CSV financial statement...')" class="btn-outline-design px-5 py-2.5 inline-flex items-center gap-2">
+          <i class="fas fa-download"></i> Export Revenue Report
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE 7: CUSTOMER MESSAGES ========== -->
+  <section id="page-messages" class="page-content hidden">
+    <div class="card-design p-6">
+      <h3 class="font-bold text-2xl mb-4">Customer Messages</h3>
+      <p class="text-sm text-charcoal/60 dark:text-gray-400 mb-6">Direct communication with clients and emergency intake requests.</p>
+
+      <div class="space-y-4">
+        <div class="p-4 bg-[rgba(var(--color-rgb-primary),0.05)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] rounded-lg">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="font-bold">Mark &amp; Susan R. <span class="text-xs font-normal text-forest ml-2">Homeowner</span></p>
+              <p class="text-sm mt-1">Hi Jake, just confirming the crew arrival time for the oak removal on May 20. Should we clear the driveway beforehand?</p>
+            </div>
+            <span class="text-xs text-charcoal/60 dark:text-gray-400">Today, 11:20 AM</span>
+          </div>
+          <div class="mt-3 flex gap-2">
+            <button onclick="replyModal('Mark & Susan R.')" class="btn-primary-design px-4 py-1 text-xs">Reply</button>
+          </div>
+        </div>
+
+        <div class="p-4 bg-white dark:bg-[#131d11] rounded-lg border border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="font-bold">Jake Morrison <span class="text-xs font-normal text-forest ml-2">Admin (You)</span></p>
+              <p class="text-sm mt-1">Hi Mark! Yes please, clear the driveway by 7:30 AM. The crane will need a clear approach path. We'll have the crew on-site by 8.</p>
+            </div>
+            <span class="text-xs text-charcoal/60 dark:text-gray-400">Today, 11:35 AM</span>
+          </div>
+        </div>
+
+        <div class="p-4 bg-[rgba(var(--color-rgb-primary),0.05)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] rounded-lg">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="font-bold">Isabella Chen <span class="text-xs font-normal text-forest ml-2">Emergency</span></p>
+              <p class="text-sm mt-1">The fallen elm is blocking our whole driveway. Can we get a crew out today? Insurance adjuster is coming tomorrow.</p>
+            </div>
+            <span class="text-xs text-charcoal/60 dark:text-gray-400">Yesterday, 3:15 PM</span>
+          </div>
+          <div class="mt-3 flex gap-2">
+            <button onclick="replyModal('Isabella Chen')" class="btn-primary-design px-4 py-1 text-xs">Reply</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-[rgba(var(--color-rgb-primary),0.1)]">
+        <label class="form-label">Send New Customer Message</label>
+        <div class="flex gap-3">
+          <input type="text" id="adminNewMsg" class="form-input flex-1" placeholder="Type a message or broadcast notice to customers..." />
+          <button onclick="sendAdminMsg()" class="btn-primary-design px-6 py-2"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // RTL toggle
+  const rtlToggle = document.getElementById('rtl-toggle');
+  const rtlToggleMobile = document.getElementById('rtl-toggle-mobile');
+  function setRTL(isRTL) {
+    document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', isRTL ? 'ar' : 'en');
+    localStorage.setItem('dir', isRTL ? 'rtl' : 'ltr');
+  }
+  setRTL(localStorage.getItem('dir') === 'rtl');
+  if (rtlToggle) rtlToggle.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+  if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  function setTheme(isDark) {
+    document.documentElement.classList.toggle('dark', isDark);
+    [themeToggle, themeToggleMobile].forEach(btn => {
+      if (btn) {
+        let moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
+        if (isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); }
+        else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); }
+      }
+    });
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  setTheme(localStorage.getItem('theme') === 'dark');
+  if (themeToggle) themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+  if (themeToggleMobile) themeToggleMobile.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+
+  // Mobile sidebar
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+  if (menuToggle) menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sidebar.classList.contains('open') ? closeSidebar() : (sidebar.classList.add('open'), overlay.classList.add('open'));
+  });
+  if (overlay) overlay.addEventListener('click', closeSidebar);
+  window.addEventListener('resize', () => { if (window.innerWidth > 768 && sidebar.classList.contains('open')) closeSidebar(); });
+
+  // Page navigation
+  const sidebarItems = document.querySelectorAll('.sidebar-item[data-page]');
+  const pages = document.querySelectorAll('.page-content');
+  const pageTitle = document.getElementById('page-title');
+  const pageSubtitle = document.getElementById('page-subtitle');
+  const titles = {
+    dashboard: { title: 'Operations Overview', subtitle: 'Welcome back, Jake · Lead Arborist' },
+    jobs: { title: 'All Jobs & Assessments', subtitle: 'Manage requested assessments, scheduled trims & emergency calls' },
+    clients: { title: 'Customers & Properties', subtitle: 'Directory of tree care clients' },
+    schedule: { title: 'Crew Scheduling', subtitle: 'Assign lead arborists and crew to scheduled jobs' },
+    services: { title: 'Service Catalog', subtitle: 'Manage your published tree care services' },
+    payments: { title: 'Invoices & Payments', subtitle: 'Track outstanding invoices and financial statements' },
+    messages: { title: 'Customer Messages', subtitle: 'Respond to client inquiries & emergency intake' }
+  };
+
+  window.navigateTo = function(page) {
+    sidebarItems.forEach(i => i.classList.remove('active'));
+    document.querySelector(`.sidebar-item[data-page="${page}"]`)?.classList.add('active');
+    pages.forEach(p => p.classList.add('hidden'));
+    document.getElementById(`page-${page}`)?.classList.remove('hidden');
+    if (titles[page]) {
+      pageTitle.textContent = titles[page].title;
+      pageSubtitle.textContent = titles[page].subtitle;
+    }
+    closeSidebar();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  sidebarItems.forEach(item => {
+    item.addEventListener('click', () => navigateTo(item.getAttribute('data-page')));
+  });
+  document.querySelectorAll('[data-nav]').forEach(btn => {
+    btn.addEventListener('click', () => navigateTo(btn.getAttribute('data-nav')));
+  });
+});
+
+function replyModal(name) {
+  const reply = prompt(`Reply to ${name}:`, `Hello ${name}, thank you for reaching out to Timber & Tonic...`);
+  if (reply) alert(`Message dispatched to ${name}.`);
+}
+function sendAdminMsg() {
+  const input = document.getElementById('adminNewMsg');
+  if (input && input.value.trim()) {
+    alert(`Broadcast sent: "${input.value.trim()}"`);
+    input.value = '';
+  }
+}
+</script>
+</body>
+</html>

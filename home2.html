@@ -1,0 +1,2627 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timber &amp; Tonic | Master Arborist Services &amp; Surgical Tree Care — Home 2</title>
+  <meta name="description" content="ISA Certified Arborists specializing in precision tree trimming, crane-assisted hazard removal, deep-grade stump grinding, and 24/7 emergency storm dispatch.">
+  <meta property="og:title" content="Timber &amp; Tonic | Master Arborist Services">
+  <meta property="og:description" content="Precision tree trimming, hazardous tree removal, and 24/7 emergency storm response.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="icon" type="image/svg+xml" href="Assets/favicon.svg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+    if (localStorage.getItem('dir') === 'rtl') {
+      document.documentElement.dir = 'rtl';
+      document.documentElement.lang = 'ar';
+    }
+  </script>
+
+  <style>
+    /* ---------- BASE VARIABLES & RESETS ---------- */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --forest-black: #0c150c;
+      --forest-deep: #131d11;
+      --forest-dark: #1b291a;
+      --forest-mid: #2b3e28;
+      --forest-light: #445c40;
+      --sage: #7a8f6b;
+      --amber: #c97f2e;
+      --amber-bright: #e89b3e;
+      --amber-light: #fef4e8;
+      --rust: #a8542c;
+      --cream: #f4f0e6;
+      --parchment: #ece5d6;
+      --white: #ffffff;
+      --charcoal: #23221e;
+      --charcoal-light: #524f46;
+      --border-light: #ded6c8;
+      
+      --font-display: "Barlow Condensed", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: "Playfair Display", Georgia, serif;
+      --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      --shadow-sm: 0 4px 16px rgba(19, 29, 17, 0.06);
+      --shadow-md: 0 12px 32px rgba(19, 29, 17, 0.10);
+      --shadow-lg: 0 24px 56px rgba(19, 29, 17, 0.16);
+      --radius: 8px;
+      --radius-lg: 16px;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .page-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .section-space {
+      padding: 100px 0;
+    }
+
+    /* ---------- HEADER NAVIGATION (FLOATING ISLAND) ---------- */
+    .site-header {
+      position: fixed;
+      top: 16px;
+      left: 24px;
+      right: 24px;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .nav-island {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 12px;
+      box-shadow: 0 10px 35px rgba(19, 29, 17, 0.08);
+      border: 1px solid var(--border-light);
+      min-height: 72px;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1340px;
+      margin: 0 auto;
+      transition: var(--transition);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: var(--forest-deep);
+      white-space: nowrap;
+    }
+
+    .brand-icon {
+      background: linear-gradient(135deg, var(--amber) 0%, #b86e22 100%);
+      color: var(--white);
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px rgba(201, 127, 46, 0.3);
+      transition: var(--transition);
+    }
+
+    .brand:hover .brand-icon {
+      transform: scale(1.06) rotate(-4deg);
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .desktop-nav > a,
+    .desktop-nav summary {
+      color: var(--forest-deep);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 2px;
+      transition: var(--transition);
+    }
+
+    .desktop-nav > a:hover,
+    .desktop-nav summary:hover,
+    .desktop-nav .active {
+      color: var(--amber);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 36px;
+      left: 0;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      min-width: 200px;
+      box-shadow: var(--shadow-md);
+      padding: 8px;
+      display: none;
+      z-index: 100;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .nav-dropdown[open] .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: none;
+      color: var(--charcoal);
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .dropdown-content a:hover {
+      background: var(--amber-light);
+      color: var(--amber);
+    }
+
+    .nav-toggles {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .circle-button {
+      border: 1px solid var(--border-light);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--forest-deep);
+      transition: var(--transition);
+    }
+
+    .circle-button:hover {
+      background: var(--parchment);
+      transform: scale(1.05);
+      color: var(--amber);
+    }
+
+    .circle-button svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .studio-button {
+      background: linear-gradient(135deg, var(--amber) 0%, #b86e22 100%);
+      color: var(--white);
+      border: 0;
+      border-radius: 8px;
+      min-height: 44px;
+      padding: 8px 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(201, 127, 46, 0.28);
+      transition: var(--transition);
+    }
+
+    .studio-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201, 127, 46, 0.38);
+    }
+
+    .arrow-disc {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      display: grid;
+      place-items: center;
+    }
+
+    .arrow-disc svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--forest-deep);
+      padding: 8px;
+    }
+
+    /* ==================== MOBILE NAVIGATION DRAWER ==================== */
+    .mobile-nav {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--border-light, #e2d9cb);
+      border-radius: 14px;
+      margin-top: 12px;
+      padding: 16px 18px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .mobile-nav.is-open,
+    .mobile-nav:not([hidden]) {
+      display: flex !important;
+    }
+
+    .mobile-nav > a,
+    .mobile-nav details > summary {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      padding: 12px 14px !important;
+      font-size: 0.95rem !important;
+      font-weight: 600 !important;
+      color: var(--forest-deep, #1b291a) !important;
+      text-decoration: none !important;
+      border-radius: 8px !important;
+      transition: background 0.2s, color 0.2s !important;
+      cursor: pointer !important;
+      box-sizing: border-box !important;
+      margin: 2px 0 !important;
+      list-style: none !important;
+    }
+
+    .mobile-nav > a:hover,
+    .mobile-nav details > summary:hover {
+      background: rgba(184, 115, 51, 0.08) !important;
+      color: var(--amber, #b87333) !important;
+    }
+
+    .mobile-nav details > summary::-webkit-details-marker {
+      display: none !important;
+    }
+
+    /* Accordion Dropdown in Mobile (Inline flow, NO absolute overlap!) */
+    .mobile-nav .nav-dropdown {
+      position: static !important;
+      width: 100% !important;
+      margin: 2px 0 !important;
+    }
+
+    .mobile-nav .nav-dropdown summary svg {
+      transition: transform 0.25s ease !important;
+    }
+
+    .mobile-nav .nav-dropdown[open] summary svg {
+      transform: rotate(180deg) !important;
+    }
+
+    .mobile-nav .dropdown-content {
+      position: static !important;
+      box-shadow: none !important;
+      border: 1px solid rgba(184, 115, 51, 0.15) !important;
+      background: rgba(0, 0, 0, 0.02) !important;
+      border-radius: 8px !important;
+      padding: 6px 8px !important;
+      margin: 4px 0 8px 10px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2px !important;
+      min-width: 0 !important;
+      animation: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      box-sizing: border-box !important;
+    }
+
+    .mobile-nav .dropdown-content a {
+      display: block !important;
+      padding: 9px 12px !important;
+      font-size: 0.88rem !important;
+      font-weight: 500 !important;
+      color: var(--forest-deep, #1b291a) !important;
+      border-radius: 6px !important;
+      text-decoration: none !important;
+      transition: background 0.2s, color 0.2s !important;
+      box-sizing: border-box !important;
+    }
+
+    .mobile-nav .dropdown-content a:hover {
+      background: rgba(184, 115, 51, 0.12) !important;
+      color: var(--amber, #b87333) !important;
+    }
+
+    /* Sign In button full-width in Mobile */
+    .mobile-nav .studio-button {
+      margin: 14px 0 10px 0 !important;
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 12px 20px !important;
+      font-size: 0.88rem !important;
+      box-sizing: border-box !important;
+      display: inline-flex !important;
+    }
+
+    /* Bottom Toggles */
+    .mobile-nav .nav-toggles {
+      display: flex !important;
+      justify-content: center !important;
+      gap: 16px !important;
+      padding-top: 12px !important;
+      border-top: 1px solid var(--border-light, #e2d9cb) !important;
+      margin-top: 8px !important;
+      width: 100% !important;
+    }
+
+    .mobile-nav .circle-button {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50% !important;
+      display: grid !important;
+      place-items: center !important;
+    }
+
+    /* Dark Mode styling for mobile drawer */
+    body.dark-mode .mobile-nav,
+    .dark .mobile-nav {
+      background: #152214 !important;
+      border-color: rgba(122, 143, 107, 0.3) !important;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45) !important;
+    }
+
+    body.dark-mode .mobile-nav > a,
+    body.dark-mode .mobile-nav details > summary,
+    .dark .mobile-nav > a,
+    .dark .mobile-nav details > summary {
+      color: #f5f2eb !important;
+    }
+
+    body.dark-mode .mobile-nav > a:hover,
+    body.dark-mode .mobile-nav details > summary:hover,
+    .dark .mobile-nav > a:hover,
+    .dark .mobile-nav details > summary:hover {
+      background: rgba(217, 119, 6, 0.15) !important;
+      color: var(--amber-bright, #d97706) !important;
+    }
+
+    body.dark-mode .mobile-nav .dropdown-content,
+    .dark .mobile-nav .dropdown-content {
+      background: rgba(255, 255, 255, 0.04) !important;
+      border-color: rgba(122, 143, 107, 0.25) !important;
+    }
+
+    body.dark-mode .mobile-nav .dropdown-content a,
+    .dark .mobile-nav .dropdown-content a {
+      color: #e2ddd5 !important;
+    }
+
+    body.dark-mode .mobile-nav .dropdown-content a:hover,
+    .dark .mobile-nav .dropdown-content a:hover {
+      background: rgba(217, 119, 6, 0.2) !important;
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .mobile-nav .nav-toggles,
+    .dark .mobile-nav .nav-toggles {
+      border-top-color: rgba(122, 143, 107, 0.25) !important;
+    }
+
+    /* ---------- HERO 2 – ELEVATED EDITORIAL ARCHITECTURE ---------- */
+    .hero2-vanguard {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding-top: 130px;
+      padding-bottom: 70px;
+      overflow: hidden;
+      background: var(--forest-deep);
+    }
+
+    .hero2-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero2-backdrop img {
+      filter: brightness(0.65) contrast(1.15) saturate(1.1);
+      transform: scale(1.03);
+      transition: transform 8s ease-out;
+    }
+
+    .hero2-backdrop::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(12, 21, 12, 0.45) 0%,
+        rgba(12, 21, 12, 0.70) 50%,
+        rgba(12, 21, 12, 0.94) 100%
+      );
+    }
+
+    .hero2-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #f5f2eb;
+      margin-bottom: 24px;
+    }
+
+    .live-status-pill .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+      animation: pulseGreen 1.8s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+    }
+
+    .hero2-title-main {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 8vw, 6.4rem);
+      font-weight: 900;
+      line-height: 0.96;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      max-width: 1050px;
+    }
+
+    .hero2-title-main em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--amber-bright);
+      text-transform: none;
+      display: block;
+    }
+
+    .hero2-grid-bottom {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: flex-end;
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .hero2-lead {
+      color: #ded8cb;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 600px;
+    }
+
+    .hero-btn-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--amber) 0%, #b86e22 100%);
+      color: #ffffff;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 20px rgba(201, 127, 46, 0.35);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-hero-primary:hover {
+      background: linear-gradient(135deg, var(--amber-bright) 0%, var(--amber) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(201, 127, 46, 0.45);
+    }
+
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      padding: 14px 26px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .btn-hero-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* Floating Instant Estimator Pill Card */
+    .quick-estimator-card {
+      background: rgba(26, 38, 24, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(122, 143, 107, 0.3);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .quick-estimator-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .quick-estimator-card p {
+      font-size: 0.82rem;
+      color: #c4bea8;
+      margin-bottom: 16px;
+    }
+
+    .calc-row-select {
+      width: 100%;
+      background: rgba(12, 21, 12, 0.7);
+      border: 1px solid rgba(122, 143, 107, 0.35);
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    .calc-row-select:focus {
+      border-color: var(--amber);
+    }
+
+    .estimator-output-badge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(201, 127, 46, 0.15);
+      border: 1px solid rgba(201, 127, 46, 0.3);
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .estimator-output-badge .cost-range {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--amber-bright);
+    }
+
+    .estimator-output-badge .est-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #e5dfd2;
+    }
+
+    /* ---------- TRUST BADGES BAR ---------- */
+    .trust-strip {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-light);
+      padding: 24px 0;
+      transition: var(--transition);
+    }
+
+    .trust-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .trust-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--parchment);
+      color: var(--amber);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .trust-item .trust-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--forest-deep);
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .trust-item .trust-sub {
+      font-size: 0.78rem;
+      color: var(--charcoal-light);
+    }
+
+    /* ---------- SECTION: MODERN SERVICES MATRIX ---------- */
+    .services-matrix-section {
+      padding: 110px 0 90px;
+      background: var(--cream);
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+
+    .section-main-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      color: var(--forest-deep);
+      margin-bottom: 16px;
+    }
+
+    .section-main-heading em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--rust);
+      text-transform: none;
+    }
+
+    .services-grid-vanguard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 1180px) {
+      .services-grid-vanguard {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid-vanguard {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .service-card-v2 {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card-v2:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--amber);
+    }
+
+    .service-card-media {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .service-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-card-v2:hover .service-card-media img {
+      transform: scale(1.06);
+    }
+
+    .service-card-content {
+      padding: 24px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .service-num-badge {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--amber);
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .service-card-content h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--forest-deep);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .service-card-content p {
+      color: var(--charcoal-light);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .service-specs-list {
+      list-style: none;
+      margin: 0 0 18px 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-specs-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.45;
+    }
+
+    .service-specs-list .spec-check {
+      color: var(--amber);
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+
+    .service-specs-list strong {
+      color: var(--forest-deep);
+      font-weight: 600;
+    }
+
+    .service-card-footer {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-light);
+      padding-top: 16px;
+      margin-top: auto;
+    }
+
+    .service-price {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--forest-deep);
+      font-weight: 500;
+    }
+
+    .service-inquire-btn {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+
+    .service-inquire-btn .arrow-diag {
+      font-size: 0.95rem;
+      transition: transform 0.2s;
+    }
+
+    .service-inquire-btn:hover {
+      color: var(--forest-deep);
+      transform: translateX(2px);
+    }
+
+    .service-inquire-btn:hover .arrow-diag {
+      transform: translate(2px, -2px);
+    }
+
+    /* Dark mode for service cards */
+    body.dark-mode .service-card-v2 {
+      background: #152214;
+      border-color: rgba(122, 143, 107, 0.25);
+    }
+
+    body.dark-mode .service-card-content h3 {
+      color: #ffffff;
+    }
+
+    body.dark-mode .service-card-content p {
+      color: #b5afa4;
+    }
+
+    body.dark-mode .service-specs-list li {
+      color: #c5bfb4;
+    }
+
+    body.dark-mode .service-specs-list strong {
+      color: #eae5db;
+    }
+
+    body.dark-mode .service-specs-list .spec-check {
+      color: var(--amber-bright);
+    }
+
+    body.dark-mode .service-card-footer {
+      border-top-color: rgba(122, 143, 107, 0.2);
+    }
+
+    body.dark-mode .service-price {
+      color: #f5f0e6;
+    }
+
+    body.dark-mode .service-inquire-btn {
+      color: var(--amber-bright);
+    }
+
+    body.dark-mode .service-inquire-btn:hover {
+      color: #ffffff;
+    }
+
+    /* ---------- SECTION: INTERACTIVE BEFORE & AFTER SLIDER ---------- */
+    .transformation-showcase {
+      background: var(--forest-deep);
+      color: #ffffff;
+      padding: 110px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .transformation-split-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .ba-slider-box {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 480px;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid rgba(122, 143, 107, 0.3);
+      user-select: none;
+    }
+
+    .ba-img-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .ba-img-before {
+      z-index: 1;
+    }
+
+    .ba-img-after {
+      z-index: 2;
+      width: 50%;
+      overflow: hidden;
+      border-right: 3px solid var(--amber-bright);
+    }
+
+    .ba-img-after img {
+      width: 100%;
+      min-width: 600px;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ba-tag {
+      position: absolute;
+      top: 20px;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .ba-tag-before {
+      right: 20px;
+      background: rgba(168, 84, 44, 0.85);
+      color: #ffffff;
+    }
+
+    .ba-tag-after {
+      left: 20px;
+      background: rgba(30, 43, 28, 0.85);
+      color: var(--amber-bright);
+      border: 1px solid var(--amber-bright);
+    }
+
+    .ba-range-slider {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: ew-resize;
+      z-index: 20;
+    }
+
+    .ba-control-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .ba-btn-toggle {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .ba-btn-toggle:hover, .ba-btn-toggle.active {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    /* ---------- SECTION: 4-STAGE SURGICAL PROCESS ---------- */
+    .process-timeline-section {
+      background: var(--parchment);
+      padding: 100px 0;
+    }
+
+    .process-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .process-step-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 26px;
+      border: 1px solid var(--border-light);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .process-step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--amber);
+    }
+
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 3.8rem;
+      font-weight: 900;
+      color: rgba(201, 127, 46, 0.2);
+      line-height: 0.9;
+      margin-bottom: 12px;
+      transition: var(--transition);
+    }
+
+    .process-step-card:hover .step-number {
+      color: var(--amber);
+    }
+
+    .process-step-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--forest-deep);
+      margin-bottom: 10px;
+    }
+
+    .process-step-card p {
+      font-size: 0.88rem;
+      color: var(--charcoal-light);
+      line-height: 1.6;
+    }
+
+    /* ---------- SECTION: INTERACTIVE COST ESTIMATOR WIDGET ---------- */
+    .calculator-suite {
+      background: var(--white);
+      padding: 110px 0;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .calc-box-wrapper {
+      background: var(--cream);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 50px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+    }
+
+    .calc-form-group {
+      margin-bottom: 20px;
+    }
+
+    .calc-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--forest-deep);
+      margin-bottom: 8px;
+    }
+
+    .calc-select, .calc-input {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .calc-select:focus, .calc-input:focus {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(201, 127, 46, 0.15);
+    }
+
+    .calc-result-panel {
+      background: var(--forest-deep);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .calc-result-panel h4 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .live-cost-display {
+      font-family: var(--font-display);
+      font-size: 3.6rem;
+      font-weight: 900;
+      color: var(--amber-bright);
+      line-height: 1;
+      margin: 16px 0 8px;
+    }
+
+    .calc-breakdown {
+      list-style: none;
+      margin: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 16px;
+    }
+
+    .calc-breakdown li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #d6cfc2;
+      margin-bottom: 8px;
+    }
+
+    /* ---------- SECTION: EMERGENCY RESPONSE BAND ---------- */
+    .emergency-command-bar {
+      position: relative;
+      background: linear-gradient(135deg, #a8542c 0%, #833a18 100%);
+      color: #ffffff;
+      padding: 85px 0;
+      overflow: hidden;
+    }
+
+    .emergency-command-bar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 24px);
+    }
+
+    .emergency-command-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .emergency-command-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .emergency-command-inner h2 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--amber-bright);
+      text-transform: none;
+    }
+
+    .emergency-command-inner p {
+      color: #f7ede3;
+      max-width: 600px;
+      font-size: 1.05rem;
+    }
+
+    .emergency-hotline-btn {
+      background: var(--forest-deep);
+      color: #ffffff;
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      white-space: nowrap;
+    }
+
+    .emergency-hotline-btn:hover {
+      background: #000000;
+      transform: scale(1.03);
+    }
+
+    .emergency-hotline-btn i {
+      color: var(--amber-bright);
+    }
+
+    /* ---------- SECTION: CERTIFIED ARBORIST TEAM ---------- */
+    .crew-vanguard-section {
+      background: var(--cream);
+      padding: 110px 0;
+    }
+
+    .crew-grid-v2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 50px;
+    }
+
+    .crew-card-v2 {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .crew-card-v2:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .crew-card-photo {
+      height: 380px;
+      position: relative;
+    }
+
+    .crew-card-photo img {
+      filter: grayscale(0.2) contrast(1.05);
+      transition: var(--transition);
+    }
+
+    .crew-card-v2:hover .crew-card-photo img {
+      filter: grayscale(0);
+      transform: scale(1.03);
+    }
+
+    .crew-badge-isa {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(12, 21, 12, 0.85);
+      backdrop-filter: blur(8px);
+      color: var(--amber-bright);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .crew-card-body {
+      padding: 26px;
+    }
+
+    .crew-card-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      color: var(--forest-deep);
+      margin-bottom: 4px;
+    }
+
+    .crew-card-role {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    .crew-card-body p {
+      font-size: 0.88rem;
+      color: var(--charcoal-light);
+      line-height: 1.6;
+    }
+
+    /* ---------- SECTION: VERIFIED CLIENT REVIEWS ---------- */
+    .reviews-section {
+      background: var(--white);
+      padding: 100px 0;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 50px;
+    }
+
+    .review-card-item {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .stars-row {
+      color: var(--amber);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .review-quote {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .reviewer-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid var(--border-light);
+      padding-top: 16px;
+    }
+
+    .reviewer-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--forest-mid);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .reviewer-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--forest-deep);
+    }
+
+    .reviewer-loc {
+      font-size: 0.75rem;
+      color: var(--charcoal-light);
+    }
+
+    /* ---------- SECTION: RAPID ASSESSMENT BOOKING SUITE ---------- */
+    .assessment-suite-section {
+      background: var(--cream);
+      padding: 110px 0;
+    }
+
+    .assessment-suite-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .assessment-left {
+      background: var(--forest-deep);
+      color: #ffffff;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .assessment-left h2 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .assessment-left h2 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--amber-bright);
+      text-transform: none;
+    }
+
+    .assessment-info-list {
+      list-style: none;
+      margin: 30px 0;
+    }
+
+    .assessment-info-list li {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      color: #e2ddd5;
+    }
+
+    .assessment-info-list li i {
+      color: var(--amber-bright);
+      font-size: 1.1rem;
+      width: 24px;
+    }
+
+    .assessment-right {
+      background: #ffffff;
+      padding: 60px 50px;
+    }
+
+    .assessment-right h3 {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      color: var(--forest-deep);
+      margin-bottom: 8px;
+    }
+
+    .assessment-right p {
+      font-size: 0.88rem;
+      color: var(--charcoal-light);
+      margin-bottom: 24px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    /* Footer styles synchronized with standard layout */
+    .site-footer {
+      background: var(--forest-black);
+      color: #b5afa4;
+      padding: 70px 0 24px;
+      border-top: 1px solid rgba(122, 143, 107, 0.2);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.85fr 1fr 1.3fr;
+      gap: 40px;
+    }
+
+    .footer-grid .brand {
+      color: var(--white);
+      margin-bottom: 18px;
+      font-size: 1.8rem;
+    }
+
+    .footer-grid p {
+      color: #a8a094;
+      margin-bottom: 14px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .footer-grid h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 22px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .footer-grid > div > a:not(.brand) {
+      display: block;
+      color: #a8a094;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-grid > div > a:not(.brand):hover {
+      color: var(--amber-bright);
+    }
+
+    .footer-grid > div:last-child p {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: #a8a094;
+      margin-bottom: 12px;
+    }
+
+    .footer-grid p svg {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      color: var(--amber-bright);
+      margin-top: 3px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #3f4f3b;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #c5bfb4;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .social-links a:hover {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: var(--forest);
+    }
+
+    .social-links svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 50px;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: #7a756c;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom em {
+      color: var(--amber-bright);
+      font-style: normal;
+    }
+
+    
+    @media (max-width: 1024px) {
+      .desktop-nav { display: none; }
+      .mobile-toggle { display: block; }
+      .hero2-grid-bottom { grid-template-columns: 1fr; }
+      .services-grid-vanguard { grid-template-columns: 1fr; }
+      .transformation-split-container { grid-template-columns: 1fr; }
+      .process-grid-cards { grid-template-columns: repeat(2, 1fr); }
+      .calc-box-wrapper { grid-template-columns: 1fr; padding: 30px; }
+      .crew-grid-v2 { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .assessment-suite-grid { grid-template-columns: 1fr; }
+      .trust-strip-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .site-header { left: 12px; right: 12px; top: 10px; }
+      .nav-island { padding: 10px 16px; }
+      .brand { font-size: 1.4rem; }
+      .brand-icon { width: 34px; height: 34px; font-size: 1rem; }
+      .hero2-title-main { font-size: 2.8rem; }
+      .process-grid-cards { grid-template-columns: 1fr; }
+      .trust-strip-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .assessment-left, .assessment-right { padding: 36px 24px; }
+    }
+  /* HOME1 SIGNIN BUTTON STANDARDIZATION */
+
+    .studio-button {
+      background: var(--amber) !important;
+      color: var(--white) !important;
+      border: 0 !important;
+      border-radius: 6px !important;
+      min-height: 44px !important;
+      padding: 8px 20px !important;
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      box-shadow: none !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+
+    .studio-button:hover {
+      background: var(--amber-bright) !important;
+      transform: translateY(-1px) !important;
+      color: var(--white) !important;
+    }
+
+    .arrow-disc {
+      width: 28px !important;
+      height: 28px !important;
+      border-radius: 50% !important;
+      background: rgba(255, 255, 255, 0.2) !important;
+      display: grid !important;
+      place-items: center !important;
+      flex-shrink: 0 !important;
+    }
+
+    .arrow-disc svg {
+      width: 15px !important;
+      height: 15px !important;
+    }
+
+</style>
+</head>
+
+<body>
+
+  <!-- ========== SITE HEADER ========== -->
+  <header class="site-header">
+    <nav class="nav-island" aria-label="Main Navigation">
+      <!-- LOGO: Clicking properly navigates to home page (index.html) -->
+      <a class="brand" href="index.html" aria-label="Timber &amp; Tonic — Home">
+        <span class="brand-icon">🌲</span>
+        <span>TIMBER &amp; TONIC</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <div class="desktop-nav">
+        <details class="nav-dropdown">
+          <summary class="active">Home <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="dropdown-content">
+            <a href="index.html#home">Home 1</a>
+            <a href="home2.html" class="active font-bold text-amber-brand">Home 2</a>
+          </div>
+        </details>
+        
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+
+        <details class="nav-dropdown">
+          <summary>Dashboard <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="dropdown-content">
+            <a href="admin.html">Studio Admin</a>
+            <a href="client.html">Member Portal</a>
+          </div>
+        </details>
+
+        <a href="login.html" class="studio-button">Sign In <span class="arrow-disc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+
+        <!-- Dark / Light + RTL Toggles -->
+        <div class="nav-toggles">
+          <button class="circle-button" id="themeToggleBtn" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+          </button>
+          <button class="circle-button" id="rtlToggleBtn" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========== HERO 2 – ARCHITECTURAL EDITORIAL VANGUARD ========== -->
+    <section class="hero2-vanguard" id="home">
+      <div class="hero2-backdrop">
+        <!-- High-res distinct arborist climbing photo -->
+        <img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?q=80&w=2070&auto=format&fit=crop" alt="Majestic sunbeams filtering through architectural forest canopies">
+      </div>
+
+      <div class="page-container hero2-content">
+        <!-- Live Status Pill -->
+        <div class="live-status-pill">
+          <span class="pulse-dot"></span>
+          <span>24/7 Rapid Emergency Response Active &bull; 14-Min Storm Dispatch</span>
+        </div>
+
+        <h1 class="hero2-title_main hero2-title-main">
+          Architectural Tree Care
+          <em>&amp; Estate Preservation.</em>
+        </h1>
+
+        <div class="hero2-grid-bottom">
+          <div>
+            <p class="hero2-lead">
+              Precision crown reduction, surgical limb removal, high-angle crane rigging, and deep-root tree pathology. Engineered by board-certified arborists committed to zero property impact since 1987.
+            </p>
+            <div class="hero-btn-row">
+              <a href="#estimator" class="btn-hero-primary">
+                Instant Price Calculator <i class="fas fa-calculator"></i>
+              </a>
+              <a href="tel:18005550199" class="btn-hero-secondary">
+                <i class="fas fa-phone-alt text-amber-brand"></i> Emergency: (800) 555-0199
+              </a>
+            </div>
+          </div>
+
+          <!-- Floating Live Estimator Box -->
+          <div class="quick-estimator-card">
+            <div class="flex items-center justify-between mb-2">
+              <h4>Quick Project Estimator</h4>
+              <span class="text-xs text-amber-brand font-bold uppercase tracking-wider">Live Ballpark</span>
+            </div>
+            <p>Select your primary service to preview real-time pricing guidance:</p>
+            <select id="quickServiceSelect" class="calc-row-select">
+              <option value="380" data-name="Crown Reduction & Thinning">Precision Crown Trimming &amp; Thinning</option>
+              <option value="850" data-name="Hazardous Tree Removal">Hazardous Crane Tree Removal</option>
+              <option value="180" data-name="Hydraulic Stump Grinding">Deep-Grade Stump Grinding</option>
+              <option value="260" data-name="Plant Health & Micro-Infusion">Plant Health &amp; Emerald Borer Care</option>
+              <option value="650" data-name="24/7 Storm Response">Emergency Storm Takedown</option>
+            </select>
+            <div class="estimator-output-badge">
+              <span class="est-label">Estimated Range:</span>
+              <span class="cost-range" id="quickCostDisplay">$280 &ndash; $480</span>
+            </div>
+            <a href="#assessment" class="btn-hero-primary w-full justify-center mt-3 text-center text-xs py-2.5">
+              Lock In Free On-Site Quote &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TRUST STRIP ========== -->
+    <section class="trust-strip">
+      <div class="page-container">
+        <div class="trust-strip-grid">
+          <div class="trust-item">
+            <div class="trust-icon-box"><i class="fas fa-certificate"></i></div>
+            <div>
+              <div class="trust-title">ISA Certified</div>
+              <div class="trust-sub">Credentialed Arborists #MW-5489A</div>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon-box"><i class="fas fa-shield-alt"></i></div>
+            <div>
+              <div class="trust-title">$2M Insured</div>
+              <div class="trust-sub">Full Comprehensive Property Shield</div>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon-box"><i class="fas fa-bolt"></i></div>
+            <div>
+              <div class="trust-title">24/7 Storm Ready</div>
+              <div class="trust-sub">Immediate Severe Weather Squad</div>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon-box"><i class="fas fa-star"></i></div>
+            <div>
+              <div class="trust-title">4.9 / 5.0 Stars</div>
+              <div class="trust-sub">Over 380+ Verified Client Reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 1: MODERN SERVICES MATRIX ========== -->
+    <section class="services-matrix-section" id="services">
+      <div class="page-container">
+        <div class="text-center max-w-2xl mx-auto">
+          <span class="section-eyebrow">01 / SURGICAL SERVICES</span>
+          <h2 class="section-main-heading">Craftsmanship in<br><em>every cut.</em></h2>
+          <p class="text-charcoal-light text-base">
+            Every branch removal, crown thinning, and crane takedown strictly conforms to ANSI A300 arboricultural standards to safeguard both tree vitality and homeowner investments.
+          </p>
+        </div>
+
+        <div class="services-grid-vanguard">
+          <!-- Service 1: Precision Crown Thinning -->
+          <article class="service-card-v2">
+            <div class="service-card-media">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=2070&auto=format&fit=crop" alt="Precision tree crown thinning">
+            </div>
+            <div class="service-card-content">
+              <span class="service-num-badge">01 &bull; PRUNING</span>
+              <h3>Precision Crown Thinning</h3>
+              <p>Specialized structural pruning to relieve wind resistance, clear roof overhangs, and eliminate deadwood while retaining the tree's natural silhouette.</p>
+              <ul class="service-specs-list">
+                <li><span class="spec-check">&#x2713;</span> <div><strong>Includes:</strong> ANSI A300 compliance &amp; sail reduction</div></li>
+                <li><span class="spec-check">&#x2713;</span> <div><strong>Features:</strong> Zero-spike bark-friendly climbing</div></li>
+              </ul>
+              <div class="service-card-footer">
+                <span class="service-price">From $250</span>
+                <a href="#assessment" class="service-inquire-btn">INQUIRE <span class="arrow-diag">&#x2197;</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Service 2: Hazardous Tree Removal -->
+          <article class="service-card-v2">
+            <div class="service-card-media">
+              <img src="https://images.unsplash.com/photo-1590682680695-43b964a3ae17?q=80&w=2070&auto=format&fit=crop" alt="Crane-assisted hazardous tree removal">
+            </div>
+            <div class="service-card-content">
+              <span class="service-num-badge">02 &bull; DISMANTLING</span>
+              <h3>Hazardous Tree Removal</h3>
+              <p>Safe sectional dismantling of dangerous or dying trees situated near foundations, powerlines, and tight lot lines using commercial crane-assisted rigging.</p>
+              <ul class="service-specs-list">
+                <li><span class="spec-check">&#x2713;</span> <div><strong>Includes:</strong> Sectional crane rigging &amp; lawn mats</div></li>
+                <li><span class="spec-check">&#x2713;</span> <div><strong>Features:</strong> 100% debris hauling &amp; free hazard bid</div></li>
+              </ul>
+              <div class="service-card-footer">
+                <span class="service-price">From $650</span>
+                <a href="#assessment" class="service-inquire-btn">INQUIRE <span class="arrow-diag">&#x2197;</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Service 3: Hydraulic Stump Grinding -->
+          <article class="service-card-v2">
+            <div class="service-card-media">
+              <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=2070&auto=format&fit=crop" alt="Hydraulic stump grinding cleanup">
+            </div>
+            <div class="service-card-content">
+              <span class="service-num-badge">03 &bull; SUB-SURFACE</span>
+              <h3>Hydraulic Stump Grinding</h3>
+              <p>Eliminate unsightly tripping hazards and termite-attracting stumps. We grind 12 to 18 inches below grade, pulverizing roots for immediate lawn reseeding.</p>
+              <ul class="service-specs-list">
+                <li><span class="spec-check">&#x2713;</span> <div><strong>Includes:</strong> 12–18" sub-grade root pulverization</div></li>
+                <li><span class="spec-check">&#x2713;</span> <div><strong>Features:</strong> Turf-safe tracks &amp; cleanup mulching</div></li>
+              </ul>
+              <div class="service-card-footer">
+                <span class="service-price">From $140</span>
+                <a href="#assessment" class="service-inquire-btn">INQUIRE <span class="arrow-diag">&#x2197;</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Service 4: Plant Health & Diagnostics -->
+          <article class="service-card-v2">
+            <div class="service-card-media">
+              <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2070&auto=format&fit=crop" alt="Botanical tree health evaluation">
+            </div>
+            <div class="service-card-content">
+              <span class="service-num-badge">04 &bull; DIAGNOSTICS</span>
+              <h3>Plant Health &amp; Diagnostics</h3>
+              <p>Scientific diagnosis and micro-infusion treatments for Emerald Ash Borer, oak wilt, fungal blights, and soil compaction to rejuvenate historic trees.</p>
+              <ul class="service-specs-list">
+                <li><span class="spec-check">&#x2713;</span> <div><strong>Includes:</strong> Certified ISA TRAQ risk diagnostics</div></li>
+                <li><span class="spec-check">&#x2713;</span> <div><strong>Features:</strong> Trunk micro-infusion &amp; soil aeration</div></li>
+              </ul>
+              <div class="service-card-footer">
+                <span class="service-price">From $195</span>
+                <a href="#assessment" class="service-inquire-btn">INQUIRE <span class="arrow-diag">&#x2197;</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 2: INTERACTIVE BEFORE & AFTER SLIDER ========== -->
+    <section class="transformation-showcase" id="gallery">
+      <div class="page-container">
+        <div class="transformation-split-container">
+          <div>
+            <span class="section-eyebrow" style="color: var(--amber-bright);">02 / DEMONSTRATED RESULTS</span>
+            <h2 class="section-main-heading text-white">
+              Surgical Precision.<br><em>Visible Difference.</em>
+            </h2>
+            <p class="text-gray-300 text-base leading-relaxed mb-6">
+              Drag the interactive slider to see how our certified arborists cleared hazardous weight and dead limbs from this 85-year-old White Oak, transforming a hazardous dark canopy into a balanced, sunlit architectural focal point.
+            </p>
+
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 rounded-full bg-amber-brand/20 text-amber-brand flex items-center justify-center shrink-0 mt-1">
+                  <i class="fas fa-wind"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">62% Reduced Wind Resistance</h4>
+                  <p class="text-xs text-gray-400">Protects property during 70+ mph gale force storms by allowing gusts to flow through the crown.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 rounded-full bg-amber-brand/20 text-amber-brand flex items-center justify-center shrink-0 mt-1">
+                  <i class="fas fa-sun"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">4x Greater Sunlight Penetration</h4>
+                  <p class="text-xs text-gray-400">Allows lush turf growth beneath the canopy while preserving shade.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="ba-control-buttons">
+              <button class="ba-btn-toggle" id="btnShowBefore">View Overgrown Before</button>
+              <button class="ba-btn-toggle active" id="btnShowSplit">50/50 Comparison</button>
+              <button class="ba-btn-toggle" id="btnShowAfter">View Pruned After</button>
+            </div>
+          </div>
+
+          <!-- Interactive Drag Slider Box -->
+          <div class="ba-slider-box" id="baBox">
+            <div class="ba-img-layer ba-img-before">
+              <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?q=80&w=2070&auto=format&fit=crop" alt="Before trimming: Dense overgrown hazardous oak tree">
+              <span class="ba-tag ba-tag-before">Before: Hazardous &amp; Dense</span>
+            </div>
+            <div class="ba-img-layer ba-img-after" id="baAfterLayer">
+              <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2070&auto=format&fit=crop" alt="After trimming: Masterfully thinned, sunlight-filtering canopy">
+              <span class="ba-tag ba-tag-after">After: Pruned &amp; Fortified</span>
+            </div>
+            <input type="range" min="0" max="100" value="50" class="ba-range-slider" id="baRangeSlider" aria-label="Before after comparison slider">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 3: 4-STAGE SURGICAL PROCESS ========== -->
+    <section class="process-timeline-section" id="process">
+      <div class="page-container">
+        <div class="text-center max-w-2xl mx-auto">
+          <span class="section-eyebrow">03 / HOW WE WORK</span>
+          <h2 class="section-main-heading">From canopy scan<br><em>to final raking.</em></h2>
+          <p class="text-charcoal-light">
+            We operate like a surgical unit. Every project follows a rigorous safety-first protocol engineered over 37 years in the field.
+          </p>
+        </div>
+
+        <div class="process-grid-cards">
+          <div class="process-step-card">
+            <div class="step-number">01</div>
+            <h4>Comprehensive Canopy Audit</h4>
+            <p>Our certified arborist conducts a comprehensive ground and aerial inspection, identifying decay, weak crotches, and property proximity hazards.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="step-number">02</div>
+            <h4>Transparent Fixed Proposal</h4>
+            <p>You receive a detailed digital work order specifying every cut, rigging approach, and exact fixed price with zero hidden equipment surcharges.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="step-number">03</div>
+            <h4>Low-Impact Execution</h4>
+            <p>We deploy heavy-duty lawn protection mats and precision sectional rigging lines. Branches are gently lowered to avoid lawn gouges.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="step-number">04</div>
+            <h4>Full Bio-Chip Cleanliness</h4>
+            <p>We chip all branches on-site, blow clean your driveways, roofs, and patios, leaving your grounds in cleaner shape than we arrived.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 4: INTERACTIVE COST ESTIMATOR WIDGET ========== -->
+    <section class="calculator-suite" id="estimator">
+      <div class="page-container">
+        <div class="calc-box-wrapper">
+          <!-- Form Inputs -->
+          <div>
+            <span class="section-eyebrow">04 / LIVE ESTIMATOR</span>
+            <h2 class="section-main-heading mb-4">Calculate your<br><em>project estimate.</em></h2>
+            <p class="text-charcoal-light text-sm mb-6">
+              Adjust parameters below to get an instant realistic ballpark estimate based on current regional arborist rates:
+            </p>
+
+            <div class="calc-form-group">
+              <label class="calc-label" for="calcService">Select Service Category</label>
+              <select id="calcService" class="calc-select">
+                <option value="350">Precision Crown Trimming &amp; Pruning</option>
+                <option value="900">Hazardous Sectional Tree Removal</option>
+                <option value="160">Deep-Grade Hydraulic Stump Grinding</option>
+                <option value="280">Plant Health Care &amp; Deep-Root Feed</option>
+                <option value="750">24/7 Storm Response Takedown</option>
+              </select>
+            </div>
+
+            <div class="calc-form-group">
+              <label class="calc-label" for="calcHeight">Tree Height / Maturity</label>
+              <select id="calcHeight" class="calc-select">
+                <option value="1.0">Small Ornamental (Under 20 ft)</option>
+                <option value="1.5" selected>Medium Mature (20 - 45 ft)</option>
+                <option value="2.2">Large Historic / Giant (45 - 80+ ft)</option>
+              </select>
+            </div>
+
+            <div class="calc-form-group">
+              <label class="calc-label" for="calcObstacle">Proximity to Structures &amp; Hazards</label>
+              <select id="calcObstacle" class="calc-select">
+                <option value="1.0">Open Yard (No immediate structures)</option>
+                <option value="1.25" selected>Near Fence, Garden, or Driveway</option>
+                <option value="1.6">Directly Over Roofline / Near Powerlines</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Output Display Panel -->
+          <div class="calc-result-panel">
+            <div>
+              <span class="text-xs uppercase font-bold text-amber-brand tracking-widest">Instant Ballpark Estimation</span>
+              <h4>Projected Investment Range</h4>
+              <div class="live-cost-display" id="calcPriceDisplay">$525 &ndash; $690</div>
+              <p class="text-xs text-gray-300">
+                Includes ISA certified crew, full insurance coverage, professional rigging equipment, and complete debris removal.
+              </p>
+            </div>
+
+            <div>
+              <ul class="calc-breakdown">
+                <li><span>Average Execution Window:</span> <strong id="calcTimeEst">2.5 &ndash; 4.0 Hours</strong></li>
+                <li><span>Recommended Crew Size:</span> <strong id="calcCrewEst">3 Certified Specialists</strong></li>
+                <li><span>Equipment Deployed:</span> <strong id="calcEquipEst">Rigging lines + Chipper</strong></li>
+              </ul>
+              <a href="#assessment" class="btn-hero-primary w-full justify-center text-center">
+                Lock In This Estimate &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 5: EMERGENCY COMMAND BAR ========== -->
+    <section class="emergency-command-bar" id="emergency">
+      <div class="page-container emergency-command-inner">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-bright flex items-center gap-2 mb-2">
+            <i class="fas fa-circle text-[8px] animate-ping"></i> Immediate Hazard Response Squad
+          </span>
+          <h2>When storms strike,<br><em>we deploy instantly.</em></h2>
+          <p>
+            Cracked trunks, hanging branches, and uprooted trees over driveways or homes don't wait. Our emergency crane crews operate 24 hours a day, 365 days a year.
+          </p>
+        </div>
+
+        <div class="shrink-0">
+          <a href="tel:18005550199" class="emergency-hotline-btn">
+            <i class="fas fa-phone-volume"></i>
+            <span>(800) 555-0199</span>
+          </a>
+          <span class="block text-center text-xs text-amber-light font-semibold mt-2">18-Minute Average Regional Dispatch</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 6: CERTIFIED ARBORIST CREW ========== -->
+    <section class="crew-vanguard-section" id="crew">
+      <div class="page-container">
+        <div class="text-center max-w-2xl mx-auto">
+          <span class="section-eyebrow">05 / LEADERSHIP</span>
+          <h2 class="section-main-heading">The experts who<br><em>lead the climb.</em></h2>
+          <p class="text-charcoal-light">
+            We don't use day laborers or subcontracted crews. Every tree is handled by trained, background-checked, career arborists.
+          </p>
+        </div>
+
+        <div class="crew-grid-v2">
+          <!-- Member 1 -->
+          <div class="crew-card-v2">
+            <div class="crew-card-photo">
+              <!-- Distinct photo for Jake Morrison -->
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000&auto=format&fit=crop" alt="Jake Morrison, Founder and Master Arborist">
+              <span class="crew-badge-isa">ISA Board Certified Master</span>
+            </div>
+            <div class="crew-card-body">
+              <h3>Jake Morrison</h3>
+              <div class="crew-card-role">Founder &amp; Senior Arborist</div>
+              <p>Over 37 years mastering high-risk tree removals and historic estate preservation. ISA TRAQ Qualified risk assessor.</p>
+            </div>
+          </div>
+
+          <!-- Member 2 -->
+          <div class="crew-card-v2">
+            <div class="crew-card-photo">
+              <!-- Distinct photo for Sarah Reynolds -->
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop" alt="Sarah Reynolds, Aerial Operations Director">
+              <span class="crew-badge-isa">ISA Certified Aerial Specialist</span>
+            </div>
+            <div class="crew-card-body">
+              <h3>Sarah Reynolds</h3>
+              <div class="crew-card-role">Aerial Operations Director</div>
+              <p>Specializes in technical rigging, crane-assisted removals, and zero-impact pruning in restricted urban quarters.</p>
+            </div>
+          </div>
+
+          <!-- Member 3 -->
+          <div class="crew-card-v2">
+            <div class="crew-card-photo">
+              <!-- Distinct photo for Danny Torres -->
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=2000&auto=format&fit=crop" alt="Danny Torres, Tree Pathologist">
+              <span class="crew-badge-isa">ISA Tree Risk Qualified</span>
+            </div>
+            <div class="crew-card-body">
+              <h3>Danny Torres</h3>
+              <div class="crew-card-role">Tree Pathologist &amp; Health Lead</div>
+              <p>Dedicated to diagnostic disease testing, mycorrhizal soil conditioning, and micro-infusion treatments for heritage trees.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 7: VERIFIED CLIENT REVIEWS ========== -->
+    <section class="reviews-section" id="testimonials">
+      <div class="page-container">
+        <div class="text-center max-w-2xl mx-auto">
+          <span class="section-eyebrow">06 / VERIFIED REVIEWS</span>
+          <h2 class="section-main-heading">Trusted across<br><em>the tri-county area.</em></h2>
+          <p class="text-charcoal-light">
+            Real feedback from local homeowners and property managers whose trees and properties we have safeguarded:
+          </p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card-item">
+            <div>
+              <div class="stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <blockquote class="review-quote">
+                "They took down an 80ft diseased oak that was leaning directly over our sunroom. Absolute surgical precision — not a single petal in our flowerbeds was crushed!"
+              </blockquote>
+            </div>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">MR</div>
+              <div>
+                <div class="reviewer-name">Marcus &amp; Elena R.</div>
+                <div class="reviewer-loc">Highland Park Estates &bull; Verified Homeowner</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card-item">
+            <div>
+              <div class="stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <blockquote class="review-quote">
+                "Called their emergency storm line at 2:00 AM when a cedar limb crushed our driveway fence. Sarah and her crew arrived in 20 minutes, secured the tree, and cleared everything."
+              </blockquote>
+            </div>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">DK</div>
+              <div>
+                <div class="reviewer-name">David K.</div>
+                <div class="reviewer-loc">River Valley Woods &bull; Storm Client</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card-item">
+            <div>
+              <div class="stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <blockquote class="review-quote">
+                "Danny diagnosed our heritage oak with root rot and administered custom micro-injections. Two seasons later, the canopy is fuller and healthier than it's been in a decade!"
+              </blockquote>
+            </div>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">SL</div>
+              <div>
+                <div class="reviewer-name">Sophia Lin</div>
+                <div class="reviewer-loc">Oak Ridge Manor &bull; Plant Health Client</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 8: RAPID ASSESSMENT BOOKING SUITE ========== -->
+    <section class="assessment-suite-section" id="assessment">
+      <div class="page-container">
+        <div class="assessment-suite-grid">
+          <div class="assessment-left">
+            <div>
+              <span class="text-xs uppercase font-bold text-amber-bright tracking-widest mb-2 block">Direct Dispatch</span>
+              <h2>Schedule your<br><em>free inspection.</em></h2>
+              <p class="text-gray-300 text-sm leading-relaxed">
+                Meet directly on-site with an ISA Certified Arborist. We evaluate tree health, structural balance, and deliver a zero-obligation written fixed proposal.
+              </p>
+
+              <ul class="assessment-info-list">
+                <li><i class="fas fa-phone-alt"></i> <span>Direct Office: <strong>+1 (800) 555-0199</strong></span></li>
+                <li><i class="fas fa-envelope"></i> <span>Email: <strong>hello@timberandtonic.com</strong></span></li>
+                <li><i class="fas fa-map-marker-alt"></i> <span>Headquarters: <strong>4800 Timberline Ridge, Valley HQ</strong></span></li>
+                <li><i class="fas fa-clock"></i> <span>Hours: <strong>Mon&ndash;Sat: 7:00 AM &ndash; 7:00 PM (24/7 Storm Response)</strong></span></li>
+              </ul>
+            </div>
+
+            <div class="pt-6 border-t border-white/20">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-shield-check text-2xl text-amber-bright"></i>
+                <span class="text-xs text-gray-300">100% Free Consultation &bull; Zero Sales Pressure &bull; Fully Licensed &amp; Insured</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="assessment-right">
+            <h3>Request On-Site Arborist</h3>
+            <p>Fill out the quick form below and our dispatcher will contact you within 2 hours:</p>
+
+            <form id="assessmentForm" class="space-y-4" onsubmit="event.preventDefault(); alert('Assessment scheduled successfully! Our arborist dispatch team will call you within 2 hours to confirm your time.');">
+              <div>
+                <label class="calc-label" for="clientName">Full Name *</label>
+                <input type="text" id="clientName" required placeholder="e.g. Robert Smith" class="calc-input">
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="calc-label" for="clientPhone">Phone Number *</label>
+                  <input type="tel" id="clientPhone" required placeholder="(555) 000-0000" class="calc-input">
+                </div>
+                <div>
+                  <label class="calc-label" for="clientEmail">Email Address</label>
+                  <input type="email" id="clientEmail" placeholder="robert@example.com" class="calc-input">
+                </div>
+              </div>
+
+              <div>
+                <label class="calc-label" for="serviceRequired">Primary Service Needed *</label>
+                <select id="serviceRequired" class="calc-select" required>
+                  <option value="">Select Service Needed...</option>
+                  <option>Precision Tree Trimming &amp; Thinning</option>
+                  <option>Hazardous Tree Removal</option>
+                  <option>Stump Grinding &amp; Root Clearing</option>
+                  <option>Plant Health Diagnostic Inspection</option>
+                  <option>Emergency Storm Damage Recovery</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="calc-label" for="clientAddress">Property Street Address &bull; City *</label>
+                <input type="text" id="clientAddress" required placeholder="e.g. 1420 Oak Hollow Rd, Valley" class="calc-input">
+              </div>
+
+              <button type="submit" class="btn-hero-primary w-full justify-center text-center mt-2">
+                Submit Free Assessment Request &rarr;
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER (AUTHENTIC ARBORIST SERVICES) ========== -->
+  <footer class="site-footer">
+    <div class="page-container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html" aria-label="Timber &amp; Tonic — Home">
+            <span class="brand-icon">🌲</span>
+            TIMBER &amp; TONIC
+          </a>
+          <p>Certified arborists dedicated to safe, sustainable tree care and storm response. Rugged service, rooted in expertise.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Quick Navigation</h3>
+          <a href="index.html#home">Home 1</a>
+          <a href="home2.html">Home 2</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="contact.html">Contact &amp; Booking</a>
+        </div>
+
+        <div>
+          <h3>Certified Services</h3>
+          <a href="services.html">Precision Tree Trimming</a>
+          <a href="services.html">Hazardous Tree Removal</a>
+          <a href="services.html">Stump Grinding &amp; Rooting</a>
+          <a href="services.html">Plant Health &amp; Deep Root Care</a>
+          <a href="services.html">24/7 Emergency Storm Dispatch</a>
+        </div>
+
+        <div>
+          <h3>Emergency Dispatch HQ</h3>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span dir="ltr">4800 Timberline Ridge, Valley HQ</span>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+            <span dir="ltr">+1 (800) 555-0199</span>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+            <span dir="ltr">hello@timberandtonic.com</span>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span dir="ltr">Mon-Sat: 7AM - 7PM (24/7 Storm Response)</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p dir="ltr">&copy; 2026 Timber &amp; Tonic Arborist Services. All rights reserved. Licensed, Bonded &amp; Insured.</p>
+        <em>ISA Certified Arborists &bull; 24/7 Storm Response &bull; Tree Preservation Excellence</em>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== INTERACTIVE SCRIPTS ========== -->
+  <script>
+    // 1. Mobile Menu handling
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const desktopNav = document.querySelector('.desktop-nav');
+    if (mobileBtn && desktopNav) {
+      let mobileNav = document.querySelector('.site-header .mobile-nav');
+      if (!mobileNav) {
+        mobileNav = document.createElement('div');
+        mobileNav.className = 'mobile-nav';
+        mobileNav.hidden = true;
+        mobileNav.innerHTML = desktopNav.innerHTML;
+        document.querySelector('.site-header').appendChild(mobileNav);
+      }
+
+      mobileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !mobileNav.hidden;
+        mobileNav.hidden = isOpen;
+        mobileNav.classList.toggle('is-open', !isOpen);
+        mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      mobileNav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobileNav.hidden = true;
+          mobileNav.classList.remove('is-open');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.site-header') && !mobileNav.hidden) {
+          mobileNav.hidden = true;
+          mobileNav.classList.remove('is-open');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // 2. Global Dark / Light Theme Toggle & Persistence
+    // Global delegation for dark mode and RTL buttons in both desktop & mobile
+    document.addEventListener('click', (e) => {
+      const themeBtn = e.target.closest('#themeToggleBtn, [aria-label="Toggle Dark/Light Mode"]');
+      if (themeBtn) {
+        const isDark = document.body.classList.toggle('dark-mode');
+        document.documentElement.classList.toggle('dark', isDark);
+        localStorage.setItem('timber_theme', isDark ? 'dark' : 'light');
+        if (typeof syncThemeUI === 'function') syncThemeUI();
+      }
+      const rtlBtn = e.target.closest('#rtlToggleBtn, [aria-label="Toggle RTL/LTR"]');
+      if (rtlBtn) {
+        const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+        const nextDir = isRTL ? 'ltr' : 'rtl';
+        document.documentElement.setAttribute('dir', nextDir);
+        localStorage.setItem('timber_dir', nextDir);
+      }
+    });
+
+    function syncThemeUI() {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('#themeToggleBtn, [aria-label="Toggle Dark/Light Mode"]').forEach(btn => {
+        btn.innerHTML = isDark
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>';
+      });
+    }
+
+    document.querySelectorAll('#themeToggleBtn, [aria-label="Toggle Dark/Light Mode"]').forEach(b => {
+      b.onclick = () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        syncThemeUI();
+      };
+    });
+    syncThemeUI();
+
+    // 3. RTL Toggle
+    const rtlBtn = document.getElementById('rtlToggleBtn');
+    if (rtlBtn) {
+      rtlBtn.addEventListener('click', () => {
+        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+        document.documentElement.setAttribute('dir', isRtl ? 'ltr' : 'rtl');
+        document.documentElement.setAttribute('lang', isRtl ? 'en' : 'ar');
+        localStorage.setItem('dir', isRtl ? 'ltr' : 'rtl');
+      });
+    }
+
+    // 4. Interactive Quick Estimator in Hero
+    const quickSelect = document.getElementById('quickServiceSelect');
+    const quickCost = document.getElementById('quickCostDisplay');
+    if (quickSelect && quickCost) {
+      const ranges = {
+        '380': '$280 – $480',
+        '850': '$650 – $1,400',
+        '180': '$140 – $260',
+        '260': '$195 – $350',
+        '650': '$550 – $1,100'
+      };
+      quickSelect.addEventListener('change', () => {
+        quickCost.textContent = ranges[quickSelect.value] || '$280 – $550';
+      });
+    }
+
+    // 5. Interactive Before / After Slider
+    const baRange = document.getElementById('baRangeSlider');
+    const baAfter = document.getElementById('baAfterLayer');
+    const btnBefore = document.getElementById('btnShowBefore');
+    const btnSplit = document.getElementById('btnShowSplit');
+    const btnAfter = document.getElementById('btnShowAfter');
+
+    function updateSlider(val) {
+      if (baAfter) baAfter.style.width = val + '%';
+      if (baRange) baRange.value = val;
+    }
+
+    if (baRange && baAfter) {
+      baRange.addEventListener('input', (e) => {
+        updateSlider(e.target.value);
+      });
+    }
+
+    if (btnBefore) {
+      btnBefore.addEventListener('click', () => {
+        updateSlider(0);
+        document.querySelectorAll('.ba-btn-toggle').forEach(b => b.classList.remove('active'));
+        btnBefore.classList.add('active');
+      });
+    }
+    if (btnSplit) {
+      btnSplit.addEventListener('click', () => {
+        updateSlider(50);
+        document.querySelectorAll('.ba-btn-toggle').forEach(b => b.classList.remove('active'));
+        btnSplit.classList.add('active');
+      });
+    }
+    if (btnAfter) {
+      btnAfter.addEventListener('click', () => {
+        updateSlider(100);
+        document.querySelectorAll('.ba-btn-toggle').forEach(b => b.classList.remove('active'));
+        btnAfter.classList.add('active');
+      });
+    }
+
+    // 6. Section 4 Live Interactive Calculator
+    const calcService = document.getElementById('calcService');
+    const calcHeight = document.getElementById('calcHeight');
+    const calcObstacle = document.getElementById('calcObstacle');
+    const calcDisplay = document.getElementById('calcPriceDisplay');
+    const calcTime = document.getElementById('calcTimeEst');
+    const calcCrew = document.getElementById('calcCrewEst');
+    const calcEquip = document.getElementById('calcEquipEst');
+
+    function recalculate() {
+      if (!calcService || !calcHeight || !calcObstacle) return;
+      const base = parseFloat(calcService.value) || 350;
+      const hFactor = parseFloat(calcHeight.value) || 1.5;
+      const oFactor = parseFloat(calcObstacle.value) || 1.25;
+
+      const low = Math.round((base * hFactor * oFactor) * 0.9);
+      const high = Math.round((base * hFactor * oFactor) * 1.25);
+
+      if (calcDisplay) calcDisplay.textContent = `$${low} – $${high}`;
+
+      // Update time & crew
+      if (hFactor > 2.0 || oFactor > 1.5) {
+        if (calcTime) calcTime.textContent = '4.0 – 7.5 Hours';
+        if (calcCrew) calcCrew.textContent = '4 ISA Specialists + Crane';
+        if (calcEquip) calcEquip.textContent = '75ft Lift + Heavy Chipper';
+      } else {
+        if (calcTime) calcTime.textContent = '2.0 – 3.5 Hours';
+        if (calcCrew) calcCrew.textContent = '2-3 ISA Specialists';
+        if (calcEquip) calcEquip.textContent = 'Rigging Lines + Turf Mats';
+      }
+    }
+
+    [calcService, calcHeight, calcObstacle].forEach(el => {
+      if (el) el.addEventListener('change', recalculate);
+    });
+    recalculate();
+    document.querySelectorAll('.studio-button').forEach(b => { b.onclick = (e) => { window.location.href = 'login.html'; }; });
+  </script>
+</body>
+</html>

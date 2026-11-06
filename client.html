@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Portal | Timber &amp; Tonic Arborist Services</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'forest': 'rgba(var(--color-rgb-primary), <alpha-value>)',
+        'forest-light': 'rgba(var(--color-rgb-light), <alpha-value>)',
+        'forest-dark': 'rgba(var(--color-rgb-dark), <alpha-value>)',
+        'forest-bright': 'rgba(var(--color-rgb-bright), <alpha-value>)',
+        'rust': 'rgba(var(--color-rgb-rust), <alpha-value>)',
+        'amber-brand': 'rgba(var(--color-rgb-amber), <alpha-value>)',
+        'warm-bg': 'var(--color-bg-warm)',
+        'charcoal': 'rgba(45, 43, 38, <alpha-value>)',
+        'paper': '#efe8dc',
+        'dark-bg': '#131d11',
+        'dark-card': '#1e2b1c',
+        'dark-surface': '#2a3b27',
+      },
+      fontFamily: {
+        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'serif': ['Playfair Display', 'Georgia', 'serif'],
+        'display': ['Barlow Condensed', 'Impact', 'sans-serif'],
+      },
+    }
+  }
+};
+</script>
+<script>
+if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+if (localStorage.getItem('dir') === 'rtl') { document.documentElement.dir = 'rtl'; document.documentElement.lang = 'ar'; }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+:root {
+  --color-primary: #1e2b1c;
+  --color-primary-light: #3a5a35;
+  --color-primary-dark: #131d11;
+  --color-primary-bright: #7a8f6b;
+  --color-rust: #a8542c;
+  --color-amber: #c97f2e;
+  --color-bg-warm: #f3efe6;
+  --color-text-dark: #2d2b26;
+  --color-rgb-primary: 30, 43, 28;
+  --color-rgb-light: 58, 90, 53;
+  --color-rgb-dark: 19, 29, 17;
+  --color-rgb-bright: 122, 143, 107;
+  --color-rgb-rust: 168, 84, 44;
+  --color-rgb-amber: 201, 127, 46;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-warm);
+  color: var(--color-text-dark);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.dark body { background-color: #131d11; color: #e2ddd5; }
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.font-display { font-family: 'Barlow Condensed', Impact, sans-serif; font-weight: 700; }
+
+.dark .text-forest { color: var(--color-primary-bright) !important; }
+.dark .border-forest { border-color: var(--color-primary-bright) !important; }
+.dark .bg-forest { background-color: var(--color-primary-bright) !important; }
+
+/* Sidebar */
+.sidebar {
+  position: fixed; left: 0; top: 0; height: 100vh; width: 280px;
+  background: #ffffff; border-right: 1px solid rgba(var(--color-rgb-primary), 0.12);
+  transition: transform 0.3s ease; z-index: 100; overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+.dark .sidebar { background: #1e2b1c; border-right-color: rgba(var(--color-rgb-bright), 0.18); }
+@media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); } }
+[dir="rtl"] .sidebar { left: auto; right: 0; border-right: none; border-left: 1px solid rgba(var(--color-rgb-primary), 0.12); }
+@media (max-width: 768px) { [dir="rtl"] .sidebar { transform: translateX(100%); } [dir="rtl"] .sidebar.open { transform: translateX(0); } }
+
+.sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 99; display: none; }
+.sidebar-overlay.open { display: block; }
+.sidebar-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem 1.4rem; margin: 0.25rem 0.75rem;
+  border-radius: 8px; color: var(--color-text-dark);
+  transition: all 0.2s; cursor: pointer; font-weight: 500; font-size: 0.9rem;
+}
+.dark .sidebar-item { color: #e2ddd5; }
+.sidebar-item:hover { background: rgba(var(--color-rgb-primary), 0.08); color: var(--color-primary); }
+.dark .sidebar-item:hover { background: rgba(var(--color-rgb-bright), 0.12); color: var(--color-primary-bright); }
+.sidebar-item.active { background: var(--color-primary); color: #ffffff; font-weight: 600; box-shadow: 0 4px 12px rgba(var(--color-rgb-primary), 0.25); }
+.dark .sidebar-item.active { background: var(--color-primary-bright); color: #131d11; }
+.sidebar-item i { width: 22px; font-size: 1rem; }
+
+.main-content { margin-left: 280px; padding: 1.5rem; min-height: 100vh; }
+[dir="rtl"] .main-content { margin-left: 0; margin-right: 280px; }
+@media (max-width: 768px) { .main-content { margin-left: 0; margin-right: 0; padding-top: 75px; } }
+
+.mobile-header {
+  display: none; position: fixed; top: 0; left: 0; right: 0;
+  background: #ffffff; padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.12);
+  z-index: 50; align-items: center; justify-content: space-between;
+}
+.dark .mobile-header { background: #1e2b1c; border-bottom-color: rgba(var(--color-rgb-bright), 0.18); }
+@media (max-width: 768px) { .mobile-header { display: flex; } }
+
+.toggle-btn {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: rgba(var(--color-rgb-primary), 0.08);
+  color: var(--color-text-dark); display: inline-flex;
+  align-items: center; justify-content: center; cursor: pointer;
+  transition: all 0.2s; border: none; font-size: 0.95rem;
+}
+.dark .toggle-btn { background: rgba(var(--color-rgb-bright), 0.12); color: #e2ddd5; }
+.toggle-btn:hover { background: var(--color-primary); color: #ffffff; }
+.dark .toggle-btn:hover { background: var(--color-primary-bright); color: #131d11; }
+
+.card-design {
+  background: #ffffff; border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid #e2d9cb;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+.dark .card-design { background: #1e2b1c; border-color: rgba(var(--color-rgb-bright), 0.18); }
+.card-design:hover { border-color: var(--color-amber); }
+.dark .card-design:hover { border-color: var(--color-primary-bright); }
+
+.btn-primary-design {
+  background: var(--color-amber); color: #ffffff;
+  font-weight: 600; border-radius: 6px; transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(var(--color-rgb-amber), 0.25);
+  white-space: nowrap; border: none; cursor: pointer;
+  text-transform: uppercase; letter-spacing: 0.03em; font-size: 0.8rem;
+}
+.btn-primary-design:hover { background: #e89b3e; transform: translateY(-1px); color: #ffffff; }
+.dark .btn-primary-design { background: var(--color-amber); color: #131d11; }
+
+.btn-outline-design {
+  border: 1.5px solid var(--color-primary); color: var(--color-primary);
+  background: transparent; border-radius: 6px; font-weight: 600;
+  transition: all 0.3s; white-space: nowrap; cursor: pointer;
+  text-transform: uppercase; letter-spacing: 0.03em; font-size: 0.78rem;
+}
+.btn-outline-design:hover { background: var(--color-primary); color: #ffffff; transform: translateY(-1px); }
+.dark .btn-outline-design { border-color: var(--color-primary-bright); color: var(--color-primary-bright); }
+.dark .btn-outline-design:hover { background: var(--color-primary-bright); color: #131d11; }
+
+.stat-card {
+  background: #ffffff; border-radius: 10px; padding: 1.25rem;
+  border: 1px solid #e2d9cb; transition: all 0.3s;
+}
+.dark .stat-card { background: #1e2b1c; border-color: rgba(var(--color-rgb-bright), 0.18); }
+.stat-card:hover { transform: translateY(-3px); border-color: var(--color-amber); }
+
+.status-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.68rem;
+  font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  white-space: nowrap; flex-shrink: 0; line-height: 1.2;
+}
+.status-confirmed, .status-active, .status-completed, .status-paid {
+  background: #e8f5eb; color: #1b5e2c;
+}
+.dark .status-confirmed, .dark .status-active, .dark .status-completed, .dark .status-paid {
+  background: #1b3d28; color: #a8ddae;
+}
+.status-requested, .status-installment, .status-scheduled {
+  background: #fef3e2; color: #b45309;
+}
+.dark .status-requested, .dark .status-installment, .dark .status-scheduled {
+  background: #45260a; color: #fcd34d;
+}
+.status-pending-payment, .status-urgent {
+  background: #fee2e2; color: #b91c1c;
+}
+.dark .status-pending-payment, .dark .status-urgent {
+  background: #450a0a; color: #fca5a5;
+}
+.status-in-progress {
+  background: #e0f2fe; color: #0369a1;
+}
+.dark .status-in-progress { background: #082f49; color: #7dd3fc; }
+
+.form-input {
+  width: 100%; padding: 0.75rem 1rem;
+  border-radius: 6px; border: 1.5px solid #d6cfc2;
+  background: #fdfbf7; transition: all 0.3s;
+  color: var(--color-text-dark); font-family: 'Inter', sans-serif;
+}
+.dark .form-input { background: #131d11; border-color: rgba(var(--color-rgb-bright), 0.22); color: #e2ddd5; }
+.form-input:focus { outline: none; border-color: var(--color-amber); box-shadow: 0 0 0 3px rgba(var(--color-rgb-amber), 0.15); }
+
+.form-label {
+  display: block; font-size: 0.8rem; font-weight: 600;
+  margin-bottom: 0.35rem; color: var(--color-text-dark);
+}
+.dark .form-label { color: #e2ddd5; }
+
+.progress-bar {
+  background: #e2d9cb; border-radius: 9999px; height: 8px; overflow: hidden;
+}
+.dark .progress-bar { background: rgba(var(--color-rgb-bright), 0.15); }
+.progress-fill {
+  background: linear-gradient(90deg, var(--color-amber), #e89b3e);
+  height: 100%; border-radius: 9999px; transition: width 0.4s ease;
+}
+.dark .progress-fill { background: linear-gradient(90deg, var(--color-primary-bright), var(--color-amber)); }
+
+.thumb-square {
+  position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 1/1;
+  background: #d9cdb8; border: 2.5px solid transparent; transition: all 0.3s ease; cursor: pointer;
+}
+.dark .thumb-square { background: #2a3b27; }
+.thumb-square img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.thumb-square:hover img { transform: scale(1.05); }
+.thumb-square.selected { border-color: var(--color-amber); box-shadow: 0 8px 24px rgba(var(--color-rgb-amber), 0.25); }
+.check-badge {
+  position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--color-amber); color: white; display: none; align-items: center; justify-content: center; font-size: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.thumb-square.selected .check-badge { display: flex; }
+.thumb-label {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 0.6rem 0.5rem;
+  background: linear-gradient(to top, rgba(19, 29, 17, 0.9) 0%, transparent 100%);
+  color: white; font-size: 0.78rem; font-weight: 600; text-align: center;
+}
+
+.receipt-item {
+  padding: 0.9rem; border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.08);
+}
+.dark .receipt-item { border-bottom-color: rgba(var(--color-rgb-bright), 0.12); }
+
+/* Punchcard circles */
+.punch-slot {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: all 0.25s ease; position: relative; font-size: 0.75rem; font-weight: 700;
+}
+.punch-slot.used {
+  background: rgba(var(--color-rgb-amber), 0.15);
+  border: 2px solid var(--color-amber);
+  color: var(--color-amber);
+}
+.dark .punch-slot.used {
+  background: rgba(var(--color-rgb-amber), 0.2);
+  border-color: var(--color-amber);
+  color: var(--color-amber);
+}
+.punch-slot.available {
+  border: 2px dashed rgba(var(--color-rgb-primary), 0.35);
+  color: rgba(var(--color-rgb-primary), 0.5);
+  background: transparent;
+}
+.dark .punch-slot.available {
+  border-color: rgba(var(--color-rgb-bright), 0.4);
+  color: rgba(var(--color-rgb-bright), 0.6);
+}
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Mobile Header -->
+<header class="mobile-header">
+  <div class="flex items-center gap-2">
+    <button id="menuToggle" class="toggle-btn" aria-label="Toggle Navigation"><i class="fas fa-bars"></i></button>
+    <a href="index.html" class="flex items-center gap-2" dir="ltr">
+      <span class="text-2xl">🌲</span>
+      <span class="font-display text-xl font-bold tracking-wide">TIMBER &amp; TONIC</span>
+    </a>
+  </div>
+  <div class="flex items-center gap-2">
+    <button id="theme-toggle-mobile" class="toggle-btn" aria-label="Toggle Theme"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i></button>
+    <a href="login.html" class="toggle-btn" title="Sign Out"><i class="fas fa-sign-out-alt"></i></a>
+  </div>
+</header>
+
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<!-- Sidebar -->
+<aside id="sidebar" class="sidebar">
+  <div class="p-6 pb-4 border-b border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)] flex justify-between items-center">
+    <a href="index.html" class="flex flex-col items-start gap-1" dir="ltr">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🌲</span>
+        <span class="font-display text-xl font-bold tracking-wide">TIMBER &amp; TONIC</span>
+      </div>
+      <span class="block text-[10px] tracking-wider text-forest dark:text-forest-bright uppercase font-bold mt-1">Customer Portal</span>
+    </a>
+  </div>
+
+  <div class="p-4 mx-3 my-3 rounded-lg bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)] flex items-center gap-3">
+    <div class="w-11 h-11 rounded-full bg-forest text-white flex items-center justify-center font-display font-bold text-base shadow-sm shrink-0">MR</div>
+    <div class="min-w-0 flex-1">
+      <p class="text-sm font-bold truncate">Mark Reynolds</p>
+      <span class="inline-block text-[10px] px-2 py-0.5 rounded-full bg-amber-brand text-white font-semibold uppercase">Customer #TT-2841</span>
+    </div>
+  </div>
+
+  <nav class="flex-1 py-1">
+    <div class="sidebar-item active" data-page="dashboard"><i class="fas fa-home"></i><span>My Dashboard</span></div>
+    <div class="sidebar-item" data-page="request"><i class="fas fa-clipboard-list"></i><span>Request Assessment</span></div>
+    <div class="sidebar-item" data-page="jobs"><i class="fas fa-tree"></i><span>My Jobs &amp; Tracking</span></div>
+    <div class="sidebar-item" data-page="services"><i class="fas fa-layer-group"></i><span>Services &amp; Pricing</span></div>
+    <div class="sidebar-item" data-page="emergency"><i class="fas fa-bolt"></i><span>Emergency Storm</span></div>
+    <div class="sidebar-item" data-page="invoices"><i class="fas fa-file-invoice-dollar"></i><span>Invoices &amp; Receipts</span></div>
+    <div class="sidebar-item" data-page="documents"><i class="fas fa-file-signature"></i><span>Agreements &amp; Waivers</span></div>
+    <a href="login.html" class="sidebar-item text-forest font-semibold"><i class="fas fa-sign-in-alt"></i><span>Login Portal</span></a>
+  </nav>
+
+  <div class="p-3 border-t border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+    <a href="login.html" class="sidebar-item text-xs text-red-600 dark:text-red-400"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="card-design p-4 md:p-6 flex justify-between items-center flex-wrap gap-4 mb-6">
+    <div>
+      <h1 class="text-2xl md:text-3xl font-bold" id="page-title">My Dashboard</h1>
+      <p class="text-sm text-charcoal/60 dark:text-gray-400" id="page-subtitle">Welcome back, Mark · Customer #TT-2841</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="theme-toggle" class="toggle-btn hidden md:inline-flex" title="Dark / Light mode">
+        <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+      </button>
+      <button data-nav="request" class="btn-primary-design px-4 py-2 inline-flex items-center gap-2">
+        <i class="fas fa-plus"></i> Request Assessment
+      </button>
+    </div>
+  </div>
+
+  <!-- ========== PAGE 1: DASHBOARD ========== -->
+  <section id="page-dashboard" class="page-content">
+    <div class="card-design p-5 md:p-6 mb-6 bg-gradient-to-r from-[rgba(var(--color-rgb-primary),0.06)] via-transparent to-[rgba(var(--color-rgb-amber),0.04)] border-l-4 border-l-amber-brand">
+      <div class="flex items-start gap-4">
+        <div class="w-11 h-11 rounded-lg bg-amber-brand text-white flex items-center justify-center shrink-0 shadow-md">
+          <i class="fas fa-tree text-lg"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-2 flex-wrap mb-1.5">
+            <span class="text-[11px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-amber-brand/15 text-amber-brand">Dashboard: Yes</span>
+            <span class="text-xs text-charcoal/60 dark:text-gray-400">Customer Tree Care Portal</span>
+          </div>
+          <p class="text-sm sm:text-base font-bold leading-snug">
+            Request assessments, track scheduled tree care jobs, and view invoices — all in one rugged, easy-to-use dashboard.
+          </p>
+          <p class="text-xs sm:text-sm text-charcoal/75 dark:text-gray-300 mt-1.5 leading-relaxed">
+            <strong>Detail:</strong> Rugged layout with a Home page on certified arborists, a Services page covering trimming, removal, and stump grinding, an Emergency Storm page, and a Login portal for your personal dashboard.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="stat-card cursor-pointer" onclick="navigateTo('jobs')">
+        <div class="flex justify-between items-center mb-2">
+          <div>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Active Jobs</p>
+            <p class="text-2xl font-bold font-display">2</p>
+          </div>
+          <div class="w-11 h-11 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] rounded-full flex items-center justify-center">
+            <i class="fas fa-tree text-forest text-base"></i>
+          </div>
+        </div>
+        <p class="text-[10px] text-charcoal/60 dark:text-gray-400">1 in progress · 1 scheduled</p>
+      </div>
+      <div class="stat-card cursor-pointer" onclick="navigateTo('jobs')">
+        <div class="flex justify-between items-center mb-2">
+          <div>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Next Job</p>
+            <p class="text-xl font-bold font-display">May 20</p>
+          </div>
+          <div class="w-11 h-11 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] rounded-full flex items-center justify-center">
+            <i class="fas fa-calendar-check text-forest text-base"></i>
+          </div>
+        </div>
+        <p class="text-xs text-charcoal/70 dark:text-gray-300 truncate">Oak Removal — 8:00 AM</p>
+      </div>
+      <div class="stat-card cursor-pointer" onclick="navigateTo('invoices')">
+        <div class="flex justify-between items-center mb-2">
+          <div>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Open Balance</p>
+            <p class="text-2xl font-bold font-display text-amber-brand">$1,200</p>
+          </div>
+          <div class="w-11 h-11 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] rounded-full flex items-center justify-center">
+            <i class="fas fa-file-invoice-dollar text-forest text-base"></i>
+          </div>
+        </div>
+        <p class="text-[10px] text-charcoal/60 dark:text-gray-400">1 unpaid invoice · View &rarr;</p>
+      </div>
+      <div class="stat-card cursor-pointer" onclick="navigateTo('services')">
+        <div class="flex justify-between items-center mb-2">
+          <div>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Services Available</p>
+            <p class="text-2xl font-bold font-display">6</p>
+          </div>
+          <div class="w-11 h-11 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] rounded-full flex items-center justify-center">
+            <i class="fas fa-layer-group text-forest text-base"></i>
+          </div>
+        </div>
+        <p class="text-[10px] text-charcoal/60 dark:text-gray-400">Trimming · Removal · Grinding</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="card-design p-6 lg:col-span-2">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-bold text-xl">My Upcoming Jobs</h3>
+          <span class="text-xs text-forest font-bold cursor-pointer hover:underline" onclick="navigateTo('jobs')">View All &rarr;</span>
+        </div>
+        <div class="space-y-3.5">
+          <div class="flex items-center justify-between gap-3 pb-3 border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.1)]">
+            <div class="flex items-start gap-3 min-w-0 flex-1">
+              <div class="w-10 h-10 rounded-lg bg-forest/10 dark:bg-white/10 flex items-center justify-center shrink-0 text-forest">
+                <i class="fas fa-tree"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-bold truncate">120-Year-Old White Oak Removal</p>
+                <p class="text-xs text-charcoal/60 dark:text-gray-400 truncate">May 20, 2026 · 8:00 AM · Cedar Ridge · Crew Alpha</p>
+              </div>
+            </div>
+            <span class="status-badge status-in-progress">In Progress</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 pb-3 border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.1)]">
+            <div class="flex items-start gap-3 min-w-0 flex-1">
+              <div class="w-10 h-10 rounded-lg bg-forest/10 dark:bg-white/10 flex items-center justify-center shrink-0 text-forest">
+                <i class="fas fa-cut"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-bold truncate">Canopy Restoration — Greenwich Estate</p>
+                <p class="text-xs text-charcoal/60 dark:text-gray-400 truncate">May 22, 2026 · 10:30 AM · Crew Beta</p>
+              </div>
+            </div>
+            <span class="status-badge status-scheduled">Scheduled</span>
+          </div>
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex items-start gap-3 min-w-0 flex-1">
+              <div class="w-10 h-10 rounded-lg bg-forest/10 dark:bg-white/10 flex items-center justify-center shrink-0 text-forest">
+                <i class="fas fa-clipboard-check"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-bold truncate">Stump Grinding — Backyard Cleanup</p>
+                <p class="text-xs text-charcoal/60 dark:text-gray-400 truncate">Requested May 15 · Awaiting assessment</p>
+              </div>
+            </div>
+            <span class="status-badge status-requested">Requested</span>
+          </div>
+        </div>
+        <button onclick="navigateTo('request')" class="btn-outline-design w-full mt-5 py-2.5 flex items-center justify-center gap-2">
+          <i class="fas fa-plus-circle"></i> Request New Assessment
+        </button>
+      </div>
+
+      <div class="card-design p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-xl mb-4">Quick Actions</h3>
+          <div class="space-y-2.5">
+            <button onclick="navigateTo('request')" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] rounded-lg hover:bg-[rgba(var(--color-rgb-primary),0.14)] transition flex items-center gap-3">
+              <i class="fas fa-clipboard-list text-forest"></i>
+              <div>
+                <p class="text-xs font-bold">Request Assessment</p>
+                <p class="text-[10px] text-charcoal/60 dark:text-gray-400">Free, no-obligation visit</p>
+              </div>
+            </button>
+            <button onclick="navigateTo('jobs')" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] rounded-lg hover:bg-[rgba(var(--color-rgb-primary),0.14)] transition flex items-center gap-3">
+              <i class="fas fa-tree text-forest"></i>
+              <div>
+                <p class="text-xs font-bold">Track My Jobs</p>
+                <p class="text-[10px] text-charcoal/60 dark:text-gray-400">Live status &amp; crew updates</p>
+              </div>
+            </button>
+            <button onclick="navigateTo('invoices')" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] rounded-lg hover:bg-[rgba(var(--color-rgb-primary),0.14)] transition flex items-center gap-3">
+              <i class="fas fa-file-invoice-dollar text-forest"></i>
+              <div>
+                <p class="text-xs font-bold">Invoices &amp; Receipts</p>
+                <p class="text-[10px] text-charcoal/60 dark:text-gray-400">Pay balance &amp; download</p>
+              </div>
+            </button>
+            <button onclick="navigateTo('emergency')" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-rust),0.08)] dark:bg-[rgba(var(--color-rgb-rust),0.12)] rounded-lg hover:bg-[rgba(var(--color-rgb-rust),0.15)] transition flex items-center gap-3 border border-[rgba(var(--color-rgb-rust),0.2)]">
+              <i class="fas fa-bolt text-rust"></i>
+              <div>
+                <p class="text-xs font-bold text-rust">Emergency Storm Line</p>
+                <p class="text-[10px] text-charcoal/60 dark:text-gray-400">24/7 rapid response</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-5 p-4 rounded-lg bg-amber-brand/5 dark:bg-white/5 border border-amber-brand/15">
+          <p class="text-[10px] font-bold uppercase tracking-wider text-amber-brand mb-1">Safety Reminder</p>
+          <p class="text-xs italic font-serif text-charcoal/80 dark:text-gray-300">"Keep your driveway clear and pets indoors on scheduled job days. Our crew will knock before starting work."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE: REQUEST ASSESSMENT ========== -->
+  <section id="page-request" class="page-content hidden">
+    <div class="card-design p-6">
+      <h3 class="font-bold text-2xl mb-2">Request a Free Assessment</h3>
+      <p class="text-sm text-charcoal/60 dark:text-gray-400 mb-6">Tell us about your property and trees. Our certified arborists will schedule a free on-site evaluation.</p>
+      <form id="assessmentForm" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="form-label">Full Name <span class="text-amber-brand">*</span></label>
+            <input type="text" class="form-input" value="Mark Reynolds" required>
+          </div>
+          <div>
+            <label class="form-label">Phone Number <span class="text-amber-brand">*</span></label>
+            <input type="tel" class="form-input" placeholder="(555) 123-4567" required>
+          </div>
+          <div>
+            <label class="form-label">Property Address <span class="text-amber-brand">*</span></label>
+            <input type="text" class="form-input" placeholder="Street, City, ZIP" required>
+          </div>
+          <div>
+            <label class="form-label">Service Needed <span class="text-amber-brand">*</span></label>
+            <select class="form-input" required>
+              <option value="">Select a service</option>
+              <option>Tree Trimming</option>
+              <option>Tree Removal</option>
+              <option>Stump Grinding</option>
+              <option>Plant Health Care</option>
+              <option>Land Clearing</option>
+              <option>Not sure — need advice</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Number of Trees</label>
+            <input type="number" class="form-input" value="1" min="1">
+          </div>
+          <div>
+            <label class="form-label">Preferred Assessment Date</label>
+            <input type="date" class="form-input">
+          </div>
+          <div class="md:col-span-2">
+            <label class="form-label">Describe the Situation</label>
+            <textarea class="form-input" rows="3" placeholder="e.g., Large oak leaning toward house after recent storm. Need urgent advice."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary-design w-full py-3 font-bold inline-flex items-center justify-center gap-2 mt-4">
+          <i class="fas fa-check-circle"></i> Submit Assessment Request
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== PAGE: MY JOBS & TRACKING ========== -->
+  <section id="page-jobs" class="page-content hidden">
+    <div class="card-design p-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+        <div>
+          <h3 class="font-bold text-2xl">My Jobs &amp; Tracking</h3>
+          <p class="text-sm text-charcoal/60 dark:text-gray-400">Follow the live status of your scheduled tree care jobs.</p>
+        </div>
+        <button data-nav="request" class="btn-primary-design px-4 py-2"><i class="fas fa-plus mr-1"></i> New Request</button>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-lg border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <p class="font-bold text-lg">120-Year-Old White Oak Removal</p>
+              <p class="text-sm text-charcoal/60 dark:text-gray-400">Cedar Ridge · Scheduled May 20, 8:00 AM · Crew Alpha + Crane</p>
+              <div class="flex items-center gap-3 mt-2">
+                <span class="status-badge status-in-progress">In Progress</span>
+                <span class="text-xs text-charcoal/60 dark:text-gray-400">Quote: $2,400 · Deposit paid: $1,200</span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="alert('Crew contact request sent.')" class="btn-outline-design text-xs px-4 py-1.5"><i class="fas fa-phone mr-1"></i>Contact Crew</button>
+              <button onclick="showJobDetail('120-Year-Old White Oak Removal', 'May 20, 2026 at 8:00 AM', 'Cedar Ridge, NY', 'Crew Alpha + Crane', 'In Progress', 'White oak split after storm, leaning toward house. Removal with crane assist, full cleanup included.')" class="btn-primary-design text-xs px-4 py-1.5"><i class="fas fa-eye mr-1"></i>Details</button>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="grid grid-cols-4 text-[10px] sm:text-xs text-charcoal/60 dark:text-gray-400 mb-1.5 font-medium">
+              <span class="text-left">Assessment</span><span class="text-center">Quote</span><span class="text-center">Scheduled</span><span class="text-right">Complete</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+          </div>
+        </div>
+
+        <div class="p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-lg border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <p class="font-bold text-lg">Canopy Restoration — Greenwich Estate</p>
+              <p class="text-sm text-charcoal/60 dark:text-gray-400">Greenwich, CT · Scheduled May 22, 10:30 AM · Crew Beta</p>
+              <div class="flex items-center gap-3 mt-2">
+                <span class="status-badge status-scheduled">Scheduled</span>
+                <span class="text-xs text-charcoal/60 dark:text-gray-400">Quote: $12,000 · Annual contract</span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="alert('Reschedule request sent.')" class="btn-outline-design text-xs px-4 py-1.5"><i class="fas fa-calendar-plus mr-1"></i>Reschedule</button>
+              <button onclick="showJobDetail('Canopy Restoration — Greenwich Estate', 'May 22, 2026 at 10:30 AM', 'Greenwich, CT', 'Crew Beta', 'Scheduled', 'Structural pruning and canopy thinning across 14 estate trees. Annual contract — no additional charge.')" class="btn-primary-design text-xs px-4 py-1.5"><i class="fas fa-eye mr-1"></i>Details</button>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="grid grid-cols-4 text-[10px] sm:text-xs text-charcoal/60 dark:text-gray-400 mb-1.5 font-medium">
+              <span class="text-left">Assessment</span><span class="text-center">Quote</span><span class="text-center">Scheduled</span><span class="text-right">Complete</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+          </div>
+        </div>
+
+        <div class="p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-lg border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <p class="font-bold text-lg">Stump Grinding — Backyard Cleanup</p>
+              <p class="text-sm text-charcoal/60 dark:text-gray-400">Cedar Ridge · Requested May 15 · Awaiting assessment</p>
+              <div class="flex items-center gap-3 mt-2">
+                <span class="status-badge status-requested">Requested</span>
+                <span class="text-xs text-charcoal/60 dark:text-gray-400">Estimate pending · Free assessment needed</span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="alert('Assessment priority requested.')" class="btn-outline-design text-xs px-4 py-1.5"><i class="fas fa-arrow-up mr-1"></i>Request Priority</button>
+              <button onclick="showJobDetail('Stump Grinding — Backyard Cleanup', 'Awaiting assessment', 'Cedar Ridge, NY', 'TBD', 'Requested', 'Two medium stumps to grind below grade, chips hauled away. Awaiting assessment and quote.')" class="btn-primary-design text-xs px-4 py-1.5"><i class="fas fa-eye mr-1"></i>Details</button>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="grid grid-cols-4 text-[10px] sm:text-xs text-charcoal/60 dark:text-gray-400 mb-1.5 font-medium">
+              <span class="text-left">Requested</span><span class="text-center">Assessment</span><span class="text-center">Quote</span><span class="text-right">Scheduled</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE: SERVICES & PRICING ========== -->
+  <section id="page-services" class="page-content hidden">
+    <div class="card-design p-6 mb-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-5">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-forest">Schedule &amp; Shala Directory</span>
+          <h2 class="text-2xl sm:text-3xl font-bold mt-1">Our Tree Care Services</h2>
+          <p class="text-sm text-charcoal/60 dark:text-gray-400">Explore the full range of certified arborist services we provide.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card-design overflow-hidden">
+          <div class="h-40 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=600&auto=format&fit=crop" alt="Tree Trimming" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-xl mb-1">Tree Trimming</h3>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-3">From $350 · Structural pruning, deadwood removal</p>
+            <p class="text-xs text-charcoal/80 dark:text-gray-300 leading-relaxed mb-4">Precision pruning to promote healthy growth and improve safety. ANSI A300 standards.</p>
+            <button onclick="navigateTo('request')" class="btn-primary-design w-full py-2 text-xs font-bold">Request Assessment</button>
+          </div>
+        </div>
+        <div class="card-design overflow-hidden">
+          <div class="h-40 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1590682680695-43b964a3ae17?q=80&w=600&auto=format&fit=crop" alt="Tree Removal" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-xl mb-1">Tree Removal</h3>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-3">From $850 · Safe, controlled removals</p>
+            <p class="text-xs text-charcoal/80 dark:text-gray-300 leading-relaxed mb-4">Advanced rigging and crane-assisted takedowns. Full debris cleanup included.</p>
+            <button onclick="navigateTo('request')" class="btn-primary-design w-full py-2 text-xs font-bold">Request Assessment</button>
+          </div>
+        </div>
+        <div class="card-design overflow-hidden">
+          <div class="h-40 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=600&auto=format&fit=crop" alt="Stump Grinding" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-xl mb-1">Stump Grinding</h3>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-3">From $250 · Below-grade grinding</p>
+            <p class="text-xs text-charcoal/80 dark:text-gray-300 leading-relaxed mb-4">Complete stump and root removal. Chips hauled away or left as mulch.</p>
+            <button onclick="navigateTo('request')" class="btn-primary-design w-full py-2 text-xs font-bold">Request Assessment</button>
+          </div>
+        </div>
+        <div class="card-design overflow-hidden">
+          <div class="h-40 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=600&auto=format&fit=crop" alt="Plant Health Care" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-xl mb-1">Plant Health Care</h3>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-3">From $150 · Diagnosis &amp; treatment</p>
+            <p class="text-xs text-charcoal/80 dark:text-gray-300 leading-relaxed mb-4">Disease diagnosis, pest management, and custom fertilization programs.</p>
+            <button onclick="navigateTo('request')" class="btn-primary-design w-full py-2 text-xs font-bold">Request Assessment</button>
+          </div>
+        </div>
+        <div class="card-design overflow-hidden">
+          <div class="h-40 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop" alt="Land Clearing" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-xl mb-1">Land Clearing</h3>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-3">Custom quote · Site prep</p>
+            <p class="text-xs text-charcoal/80 dark:text-gray-300 leading-relaxed mb-4">Selective clearing and lot preparation for construction or landscaping.</p>
+            <button onclick="navigateTo('request')" class="btn-primary-design w-full py-2 text-xs font-bold">Request Assessment</button>
+          </div>
+        </div>
+        <div class="card-design overflow-hidden">
+          <div class="h-40 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?q=80&w=600&auto=format&fit=crop" alt="Emergency Storm" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-xl mb-1">Emergency Storm</h3>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-3">24/7 response · Urgent dispatch</p>
+            <p class="text-xs text-charcoal/80 dark:text-gray-300 leading-relaxed mb-4">Rapid response for fallen trees, hanging limbs, and storm-damaged trees.</p>
+            <button onclick="navigateTo('emergency')" class="btn-primary-design w-full py-2 text-xs font-bold">Call Emergency Line</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE: EMERGENCY STORM ========== -->
+  <section id="page-emergency" class="page-content hidden">
+    <div class="card-design p-6 mb-6 bg-[rgba(var(--color-rgb-rust),0.05)] dark:bg-[rgba(var(--color-rgb-rust),0.1)] border-l-4 border-l-rust">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+        <div class="flex items-start gap-4">
+          <div class="w-14 h-14 rounded-full bg-rust text-white flex items-center justify-center shrink-0 shadow-md">
+            <i class="fas fa-bolt text-2xl"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-rust">24/7 Emergency Line</span>
+            <h2 class="text-2xl sm:text-3xl font-bold mt-1">Storm Damage? Call Now.</h2>
+            <p class="text-sm text-charcoal/70 dark:text-gray-300 mt-2 max-w-xl">Fallen trees, hanging limbs, or storm-damaged trees threatening your property — our emergency crew is on call 24/7, ready to respond immediately.</p>
+          </div>
+        </div>
+        <a href="tel:+18005550199" class="btn-primary-design bg-rust hover:bg-[#8f4524] px-6 py-3.5 text-base font-bold inline-flex items-center gap-3 whitespace-nowrap">
+          <i class="fas fa-phone"></i> +1 (800) 555-0199
+        </a>
+      </div>
+    </div>
+
+    <div class="card-design p-6">
+      <h3 class="font-bold text-xl mb-4">How Emergency Response Works</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="p-5 rounded-lg bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="w-10 h-10 rounded-full bg-rust/15 text-rust flex items-center justify-center mb-3 font-bold font-display text-lg">1</div>
+          <h4 class="font-bold text-base mb-1.5">Call Our Line</h4>
+          <p class="text-xs text-charcoal/70 dark:text-gray-300">Reach our 24/7 emergency team. Describe the hazard and give your address.</p>
+        </div>
+        <div class="p-5 rounded-lg bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="w-10 h-10 rounded-full bg-rust/15 text-rust flex items-center justify-center mb-3 font-bold font-display text-lg">2</div>
+          <h4 class="font-bold text-base mb-1.5">Crew Dispatched</h4>
+          <p class="text-xs text-charcoal/70 dark:text-gray-300">We dispatch the nearest available emergency crew immediately with cranes and rigging.</p>
+        </div>
+        <div class="p-5 rounded-lg bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] border border-[rgba(var(--color-rgb-primary),0.08)]">
+          <div class="w-10 h-10 rounded-full bg-rust/15 text-rust flex items-center justify-center mb-3 font-bold font-display text-lg">3</div>
+          <h4 class="font-bold text-base mb-1.5">Site Made Safe</h4>
+          <p class="text-xs text-charcoal/70 dark:text-gray-300">Hazard removed, property secured, full cleanup completed. Insurance docs provided.</p>
+        </div>
+      </div>
+      <button onclick="navigateTo('request')" class="btn-outline-design w-full mt-6 py-3 font-semibold inline-flex items-center justify-center gap-2">
+        <i class="fas fa-clipboard-list"></i> Or Submit a Non-Urgent Request
+      </button>
+    </div>
+  </section>
+
+  <!-- ========== PAGE: INVOICES & RECEIPTS ========== -->
+  <section id="page-invoices" class="page-content hidden">
+    <div class="card-design p-6 mb-6">
+      <h3 class="font-bold text-2xl mb-4">Account Summary</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div class="p-4 rounded-lg bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)]">
+          <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Open Balance</p>
+          <p class="text-2xl font-bold font-display text-amber-brand">$1,200.00</p>
+          <p class="text-xs text-forest font-semibold mt-1">1 unpaid invoice</p>
+        </div>
+        <div class="p-4 rounded-lg bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)]">
+          <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Total Paid (YTD)</p>
+          <p class="text-2xl font-bold font-display">$2,400.00</p>
+          <p class="text-xs text-charcoal/60 dark:text-gray-400 mt-1">2 invoices settled</p>
+        </div>
+        <div class="p-4 rounded-lg bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)]">
+          <p class="text-xs text-charcoal/60 dark:text-gray-400 mb-1">Next Billing</p>
+          <p class="text-2xl font-bold font-display">Upon completion</p>
+          <p class="text-xs text-charcoal/60 dark:text-gray-400 mt-1">Final payment after removal</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-design p-6">
+      <h3 class="font-bold text-2xl mb-4">Invoices &amp; Payment Receipts</h3>
+      <div class="space-y-3">
+        <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-lg bg-[rgba(var(--color-rgb-amber),0.04)] border border-[rgba(var(--color-rgb-amber),0.15)]">
+          <div class="flex items-center gap-3 min-w-0 flex-1">
+            <div class="w-10 h-10 rounded-full bg-amber-brand/20 flex items-center justify-center shrink-0">
+              <i class="fas fa-clock text-amber-brand text-sm"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-bold text-sm sm:text-base leading-tight">White Oak Removal — Cedar Ridge (Balance)</p>
+              <p class="text-xs text-charcoal/60 dark:text-gray-400 mt-0.5">Issued May 20, 2026 · Invoice #TT-INV-2841</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-between sm:justify-end gap-3">
+            <span class="font-bold text-base">$1,200.00</span>
+            <span class="status-badge status-pending-payment text-xs">Due</span>
+            <button onclick="alert('Redirecting to secure payment checkout...')" class="btn-primary-design px-3 py-1.5 text-xs">Pay Now</button>
+          </div>
+        </div>
+
+        <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-lg">
+          <div class="flex items-center gap-3 min-w-0 flex-1">
+            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center shrink-0">
+              <i class="fas fa-check text-green-600 dark:text-green-400 text-sm"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-bold text-sm sm:text-base leading-tight">White Oak Removal — Deposit</p>
+              <p class="text-xs text-charcoal/60 dark:text-gray-400 mt-0.5">Paid May 18, 2026 · Visa •••• 4242 · Invoice #TT-INV-2838</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-between sm:justify-end gap-3">
+            <span class="font-bold text-base">$1,200.00</span>
+            <span class="status-badge status-paid text-xs">Paid</span>
+            <button onclick="alert('Receipt downloaded.')" class="text-forest hover:opacity-80 p-1"><i class="fas fa-download"></i></button>
+          </div>
+        </div>
+
+        <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-lg">
+          <div class="flex items-center gap-3 min-w-0 flex-1">
+            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center shrink-0">
+              <i class="fas fa-check text-green-600 dark:text-green-400 text-sm"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-bold text-sm sm:text-base leading-tight">Canopy Restoration — Greenwich Estate</p>
+              <p class="text-xs text-charcoal/60 dark:text-gray-400 mt-0.5">Paid Mar 12, 2026 · Annual contract · Invoice #TT-INV-2710</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-between sm:justify-end gap-3">
+            <span class="font-bold text-base">$12,000.00</span>
+            <span class="status-badge status-paid text-xs">Paid</span>
+            <button onclick="alert('Receipt downloaded.')" class="text-forest hover:opacity-80 p-1"><i class="fas fa-download"></i></button>
+          </div>
+        </div>
+      </div>
+      <button onclick="alert('Redirecting to secure card update portal...')" class="btn-primary-design w-full mt-6 py-3 text-sm font-bold inline-flex items-center justify-center gap-2">
+        <i class="fas fa-credit-card"></i> Update Payment Method
+      </button>
+    </div>
+  </section>
+
+  <!-- ========== PAGE: AGREEMENTS & WAIVERS ========== -->
+  <section id="page-documents" class="page-content hidden">
+    <div class="card-design p-6">
+      <h3 class="font-bold text-2xl mb-4">Agreements &amp; Waivers</h3>
+      <p class="text-sm text-charcoal/60 dark:text-gray-400 mb-6">Review your signed service agreements, insurance certificates, and property waivers.</p>
+      <div class="space-y-3">
+        <div class="receipt-item flex justify-between items-center">
+          <div>
+            <p class="font-bold">Tree Care Service Agreement &amp; Liability Release</p>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400">Signed electronically · Valid through Dec 2026</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="status-badge status-completed text-xs">Signed</span>
+            <button onclick="alert('Downloading signed agreement PDF...')" class="text-forest hover:opacity-80"><i class="fas fa-download"></i></button>
+          </div>
+        </div>
+
+        <div class="receipt-item flex justify-between items-center">
+          <div>
+            <p class="font-bold">Certificate of Insurance — $2M General Liability</p>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400">Current through Dec 2026</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="status-badge status-completed text-xs">Active</span>
+            <button onclick="alert('Downloading COI...')" class="text-forest hover:opacity-80"><i class="fas fa-download"></i></button>
+          </div>
+        </div>
+
+        <div class="receipt-item flex justify-between items-center">
+          <div>
+            <p class="font-bold">Property Access &amp; Work Authorization</p>
+            <p class="text-xs text-charcoal/60 dark:text-gray-400">Cedar Ridge property</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="status-badge status-completed text-xs">Complete</span>
+            <button onclick="alert('Downloading authorization...')" class="text-forest hover:opacity-80"><i class="fas fa-download"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Job Detail Modal -->
+<div id="jobModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
+  <div class="card-design max-w-lg w-full p-6 relative">
+    <button onclick="closeJobDetail()" class="absolute top-4 right-4 text-charcoal/60 dark:text-gray-300 hover:text-amber-brand text-xl">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="flex items-center gap-3 mb-4">
+      <div class="w-10 h-10 rounded-full bg-amber-brand/15 text-amber-brand flex items-center justify-center">
+        <i class="fas fa-tree"></i>
+      </div>
+      <div>
+        <h4 id="modalTitle" class="font-bold text-xl">Job Details</h4>
+        <p id="modalTime" class="text-xs text-charcoal/60 dark:text-gray-400"></p>
+      </div>
+    </div>
+    <div class="space-y-3 text-sm py-2 border-y border-[rgba(var(--color-rgb-primary),0.1)] my-3">
+      <div class="flex justify-between">
+        <span class="text-charcoal/60 dark:text-gray-400">Property / Address:</span>
+        <span id="modalAddress" class="font-semibold text-right"></span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-charcoal/60 dark:text-gray-400">Assigned Crew:</span>
+        <span id="modalCrew" class="font-semibold text-right"></span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-charcoal/60 dark:text-gray-400">Job Status:</span>
+        <span id="modalStatus" class="font-semibold text-right text-forest"></span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-charcoal/60 dark:text-gray-400">Description:</span>
+        <span id="modalDesc" class="font-semibold text-right text-xs"></span>
+      </div>
+    </div>
+    <div class="flex gap-3 mt-4">
+      <button onclick="closeJobDetail()" class="btn-primary-design w-full py-2.5 text-sm">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // RTL toggle
+  const rtlToggle = document.getElementById('rtl-toggle');
+  const rtlToggleMobile = document.getElementById('rtl-toggle-mobile');
+  function setRTL(isRTL) {
+    document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', isRTL ? 'ar' : 'en');
+    localStorage.setItem('dir', isRTL ? 'rtl' : 'ltr');
+  }
+  setRTL(localStorage.getItem('dir') === 'rtl');
+  if (rtlToggle) rtlToggle.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+  if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  function setTheme(isDark) {
+    document.documentElement.classList.toggle('dark', isDark);
+    [themeToggle, themeToggleMobile].forEach(btn => {
+      if (btn) {
+        let moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
+        if (isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); }
+        else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); }
+      }
+    });
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  setTheme(localStorage.getItem('theme') === 'dark');
+  if (themeToggle) themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+  if (themeToggleMobile) themeToggleMobile.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+
+  // Mobile sidebar
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+  if (menuToggle) menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sidebar.classList.contains('open') ? closeSidebar() : (sidebar.classList.add('open'), overlay.classList.add('open'));
+  });
+  if (overlay) overlay.addEventListener('click', closeSidebar);
+  window.addEventListener('resize', () => { if (window.innerWidth > 768 && sidebar.classList.contains('open')) closeSidebar(); });
+
+  // Page navigation
+  const sidebarItems = document.querySelectorAll('.sidebar-item[data-page]');
+  const pages = document.querySelectorAll('.page-content');
+  const pageTitle = document.getElementById('page-title');
+  const pageSubtitle = document.getElementById('page-subtitle');
+  const titles = {
+    dashboard: { title: 'My Dashboard', subtitle: 'Welcome back, Mark · Customer #TT-2841' },
+    request: { title: 'Request Assessment', subtitle: 'Free, no-obligation on-site evaluation' },
+    jobs: { title: 'My Jobs & Tracking', subtitle: 'Follow the live status of your tree care jobs' },
+    services: { title: 'Services & Pricing', subtitle: 'Certified arborist services for your property' },
+    emergency: { title: 'Emergency Storm', subtitle: '24/7 rapid response for storm damage' },
+    invoices: { title: 'Invoices & Receipts', subtitle: 'View balances, pay invoices, download receipts' },
+    documents: { title: 'Agreements & Waivers', subtitle: 'Download signed service agreements and COIs' }
+  };
+
+  window.navigateTo = function(page) {
+    sidebarItems.forEach(i => i.classList.remove('active'));
+    document.querySelector(`.sidebar-item[data-page="${page}"]`)?.classList.add('active');
+    pages.forEach(p => p.classList.add('hidden'));
+    document.getElementById(`page-${page}`)?.classList.remove('hidden');
+    if (titles[page]) {
+      pageTitle.textContent = titles[page].title;
+      pageSubtitle.textContent = titles[page].subtitle;
+    }
+    closeSidebar();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  sidebarItems.forEach(item => {
+    item.addEventListener('click', () => navigateTo(item.getAttribute('data-page')));
+  });
+  document.querySelectorAll('[data-nav]').forEach(btn => {
+    btn.addEventListener('click', () => navigateTo(btn.getAttribute('data-nav')));
+  });
+
+  // Assessment form
+  const assessmentForm = document.getElementById('assessmentForm');
+  if (assessmentForm) {
+    assessmentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Assessment request submitted! Our team will call you within 1 business day to schedule your free visit.');
+      navigateTo('jobs');
+    });
+  }
+});
+
+// Job detail modal
+function showJobDetail(title, time, address, crew, status, desc) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalTime').textContent = time;
+  document.getElementById('modalAddress').textContent = address;
+  document.getElementById('modalCrew').textContent = crew;
+  document.getElementById('modalStatus').textContent = status;
+  document.getElementById('modalDesc').textContent = desc;
+  document.getElementById('jobModal').classList.remove('hidden');
+  document.getElementById('jobModal').classList.add('flex');
+}
+
+function closeJobDetail() {
+  document.getElementById('jobModal').classList.add('hidden');
+  document.getElementById('jobModal').classList.remove('flex');
+}
+</script>
+</body>
+</html>
